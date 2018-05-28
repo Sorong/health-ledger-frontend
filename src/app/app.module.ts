@@ -9,6 +9,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { HealthRecordComponent } from './health-record/health-record.component';
+import { RouterModule, Routes } from '@angular/router';
+
+
+const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'health-record', component: HealthRecordComponent},
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'health-record',
+    component: HealthRecordComponent
+  }
+];
+
 
 @NgModule({
   declarations: [
@@ -17,6 +33,10 @@ import { HealthRecordComponent } from './health-record/health-record.component';
     HealthRecordComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
