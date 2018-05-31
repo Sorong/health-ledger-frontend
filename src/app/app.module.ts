@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    TherapyDetailsComponent
+    TherapyDetailsComponent,
     HealthRecordComponent
   ],
   imports: [
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule, FormsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule
+    FlexLayoutModule, FormsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule,
     FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
