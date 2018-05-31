@@ -9,6 +9,7 @@ import {
   MatTableModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -25,6 +26,7 @@ import { AccessRequestComponent } from './access-request/access-request.componen
 import { SickNoteOverviewComponent } from './sick-note-overview/sick-note-overview.component';
 import { SmartRecipeDetailsComponent } from './smart-recipe-details/smart-recipe-details.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
+import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
 
 
 
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
   {path: 'qr-code', component: QrCodeComponent},
+  {path: 'qr-code-scanner', component: QrCodeScannerComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -60,6 +63,7 @@ const appRoutes: Routes = [
     SickNoteOverviewComponent,
     SmartRecipeDetailsComponent,
     QrCodeComponent,
+    QrCodeScannerComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -77,7 +81,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    QRCodeModule
+    QRCodeModule,
+    ZXingScannerModule,
   ],
   exports: [],
   providers: [],
