@@ -1,0 +1,65 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="row">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Anfrage von:" value={{from}} readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Anfrage an:" value={{to}} readonly>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="ds" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="therapy">
+      <th mat-header-cell *matHeaderCellDef> Behandlung </th>
+      <td mat-cell *matCellDef="let element"> {{element.therapy}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="diagnose">
+      <th mat-header-cell *matHeaderCellDef> Diagnose </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox
+          class="example-margin"
+          [(ngModel)]="element.diagnose.checked"
+          [(indeterminate)]="element.diagnose.indeterminate"
+          [disabled]="element.diagnose.disabled">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="recipe">
+      <th mat-header-cell *matHeaderCellDef> Rezept </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox
+          class="example-margin"
+          [(ngModel)]="element.recipe.checked"
+          [(indeterminate)]="element.recipe.indeterminate"
+          [disabled]="element.recipe.disabled">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="incapacity">
+      <th mat-header-cell *matHeaderCellDef> Arbeitsunfähigkeit </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox
+          class="example-margin"
+          [(ngModel)]="element.incapacity.checked"
+          [(indeterminate)]="element.incapacity.indeterminate"
+          [disabled]="element.incapacity.disabled">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <div fxLayout="row">
+    <button mat-raised-button>Speichern</button>
+    <button mat-raised-button>Zurück</button>
+  </div>
+</div>
