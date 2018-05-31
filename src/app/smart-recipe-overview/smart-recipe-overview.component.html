@@ -4,31 +4,26 @@
 
 <table mat-table [dataSource]="ds" class="mat-elevation-z8">
 
-  <!-- Position Column -->
   <ng-container matColumnDef="datum">
     <th mat-header-cell *matHeaderCellDef> Datum </th>
     <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
   </ng-container>
 
-  <!-- Name Column -->
   <ng-container matColumnDef="medikamentname">
     <th mat-header-cell *matHeaderCellDef> Medikamentname </th>
     <td mat-cell *matCellDef="let element"> {{element.medikamentname}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
   <ng-container matColumnDef="dosierung">
     <th mat-header-cell *matHeaderCellDef> Dosierung </th>
     <td mat-cell *matCellDef="let element"> {{element.dosierung}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
   <ng-container matColumnDef="arzt">
     <th mat-header-cell *matHeaderCellDef> Arzt </th>
     <td mat-cell *matCellDef="let element"> {{element.arzt}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
   <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef> Details </th>
     <td mat-cell *matCellDef="let element"> <button mat-raised-button>Rezeptdetails öffnen {{element.details}}</button> </td>

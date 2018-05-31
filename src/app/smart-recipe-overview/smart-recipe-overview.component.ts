@@ -22,7 +22,7 @@ export class SmartRecipeOverviewComponent implements OnInit {
 
 }
 
-export interface Behandlung {
+export interface Rezept {
   datum: string;
   medikamentname: string;
   dosierung: string;
@@ -30,6 +30,6 @@ export interface Behandlung {
   details: number;
 }
 
-const ELEMENT_DATA: Behandlung[] = [
+const ELEMENT_DATA: Rezept[] = [
   {datum: '12.05.2018', medikamentname: 'Ebastel', dosierung: '2x tgl.', arzt: 'Dr. A', details: 1},
 ];
