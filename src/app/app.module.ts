@@ -22,6 +22,7 @@ import { SmartRecipeOverviewComponent } from './smart-recipe-overview/smart-reci
 import { PatientOverviewComponent } from './patient-overview/patient-overview.component';
 import { AccessRequestComponent } from './access-request/access-request.component';
 import { SickNoteOverviewComponent } from './sick-note-overview/sick-note-overview.component';
+import { SmartRecipeDetailsComponent } from './smart-recipe-details/smart-recipe-details.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   {path: 'therapy-details', component: TherapyDetailsComponent},
   {path: 'health-record', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
+  {path: 'smart-recipe-details', component: SmartRecipeDetailsComponent},
   {path: 'patient-overview', component: PatientOverviewComponent},
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     SmartRecipeOverviewComponent,
     PatientOverviewComponent,
     AccessRequestComponent,
-    SickNoteOverviewComponent
+    SickNoteOverviewComponent,
+    SmartRecipeDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(
