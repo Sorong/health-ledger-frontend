@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-therapy-details',
@@ -8,17 +8,12 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class TherapyDetailsComponent implements OnInit {
 
-  detailsCategory = new FormControl('', [Validators.required]);
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
+  category = "Mag Rosenkohl"
+  diagnose = "Massive psychische Störung, wer mag schon Rosenkohl?"
+  recipe = "1kg Pizza pro Tag"
 
-  details = [
-    {name: 'Allergie'},
-    {name: 'Akute Erkrankungen'},
-    {name: 'Chronische Erkrankungen'},
-    {name: 'Sonstiges'},
-    {name: 'Mag Rosenkohl'}
-  ];
 
   constructor() { }
 

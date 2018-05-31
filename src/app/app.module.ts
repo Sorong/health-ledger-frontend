@@ -3,11 +3,10 @@ import {NgModule} from '@angular/core';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
-  MatDatepickerModule,
+  MatDatepickerModule, MatExpansionModule,
   MatFormFieldModule,
   MatNativeDateModule,
-  MatTableModule
-} from '@angular/material';
+  MatTableModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
@@ -19,6 +18,7 @@ import {TherapyDetailsComponent} from './therapy-details/therapy-details.compone
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatOptionModule, MatSelectModule} from '@angular/material';
 import { SmartRecipeOverviewComponent } from './smart-recipe-overview/smart-recipe-overview.component';
+import { DiagnosticsComponent } from './diagnostics/diagnostics.component';
 
 
 const appRoutes: Routes = [
@@ -26,6 +26,7 @@ const appRoutes: Routes = [
   {path: 'therapy-details', component: TherapyDetailsComponent},
   {path: 'health-record', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
+  {path: 'diagnostics', component: DiagnosticsComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     LoginComponent,
     TherapyDetailsComponent,
     HealthRecordComponent,
-    SmartRecipeOverviewComponent
+    SmartRecipeOverviewComponent,
+    DiagnosticsComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -54,6 +56,7 @@ const appRoutes: Routes = [
     //Therapy-Details:
     FormsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
     //End-TherapyDetails
+    MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule

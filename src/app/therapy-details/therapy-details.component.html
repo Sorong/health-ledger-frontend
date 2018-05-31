@@ -2,29 +2,23 @@
   <h1 class="mat-display-1">Health Ledger</h1>
 
 
-  <mat-form-field>
-    <mat-select placeholder="Kategorie" [formControl]="detailsCategory" required>
-      <mat-option>--</mat-option>
-      <mat-option *ngFor="let item of details" [value]="details">
-        {{item.name}}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="detailsCategory.hasError('required')">Bitte wählen Sie eine Kategorie</mat-error>
-    <mat-hint>{{detailsCategory.value?.name}}</mat-hint>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Kategorie" value={{category}} readonly>
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="Diagnose"></textarea>
+    <textarea matInput placeholder="Diagnose" value={{diagnose}} readonly></textarea>
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="Rezept"></textarea>
+    <textarea matInput placeholder="Rezept" value={{recipe}} readonly></textarea>
   </mat-form-field>
 
 
   <div fxLayout="row">
     <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date" readonly>
+      <input matInput [matDatepicker]="picker1" placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date"
+             readonly>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
