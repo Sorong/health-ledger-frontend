@@ -1,0 +1,31 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="ds" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="geburtsdatum">
+    <th mat-header-cell *matHeaderCellDef> Geburtsdatum </th>
+    <td mat-cell *matCellDef="let element"> {{element.geburtsdatum}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="publickey">
+    <th mat-header-cell *matHeaderCellDef> Public Key </th>
+    <td mat-cell *matCellDef="let element"> {{element.publickey}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef> Details </th>
+    <td mat-cell *matCellDef="let element"> <button mat-raised-button>Akte einsehen {{element.details}}</button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br>
+<button mat-raised-button>Einsichtsanfrage stellen</button>

@@ -19,6 +19,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatOptionModule, MatSelectModule} from '@angular/material';
 import { SmartRecipeOverviewComponent } from './smart-recipe-overview/smart-recipe-overview.component';
 import { DiagnosticsComponent } from './diagnostics/diagnostics.component';
+import { PatientOverviewComponent } from './patient-overview/patient-overview.component';
+import { AccessRequestComponent } from './access-request/access-request.component';
+import { SickNoteOverviewComponent } from './sick-note-overview/sick-note-overview.component';
+import { SmartRecipeDetailsComponent } from './smart-recipe-details/smart-recipe-details.component';
 
 
 const appRoutes: Routes = [
@@ -27,6 +31,10 @@ const appRoutes: Routes = [
   {path: 'health-record', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
+  {path: 'smart-recipe-details', component: SmartRecipeDetailsComponent},
+  {path: 'patient-overview', component: PatientOverviewComponent},
+  {path: 'access-requests', component: AccessRequestComponent},
+  {path: 'sick-note-overview', component: SickNoteOverviewComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -42,7 +50,11 @@ const appRoutes: Routes = [
     TherapyDetailsComponent,
     HealthRecordComponent,
     SmartRecipeOverviewComponent,
-    DiagnosticsComponent
+    DiagnosticsComponent,
+    PatientOverviewComponent,
+    AccessRequestComponent,
+    SickNoteOverviewComponent,
+    SmartRecipeDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(

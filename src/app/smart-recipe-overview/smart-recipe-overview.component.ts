@@ -7,7 +7,7 @@ import {MatTableDataSource} from '@angular/material';
   styleUrls: ['./smart-recipe-overview.component.css']
 })
 export class SmartRecipeOverviewComponent implements OnInit {
-  displayedColumns = ['datum', 'kategorie', 'diagnose', 'arzt', 'details'];
+  displayedColumns = ['datum', 'medikamentname', 'dosierung', 'arzt', 'details'];
   ds = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -22,17 +22,14 @@ export class SmartRecipeOverviewComponent implements OnInit {
 
 }
 
-export interface Behandlung {
+export interface Rezept {
   datum: string;
-  kategorie: string;
-  diagnose: string;
+  medikamentname: string;
+  dosierung: string;
   arzt: string;
   details: number;
 }
 
-const ELEMENT_DATA: Behandlung[] = [
-  {datum: '12.05.2018', kategorie: 'Allergie', diagnose: 'Patient reagiert auf Pollen...', arzt: 'Dr. A', details: 1},
-  {datum: '11.05.2018', kategorie: 'Routine', diagnose: 'Blutabnahme zur Einsendung ins Labor...', arzt: 'Dr. B', details: 2},
-  {datum: '04.04.2018', kategorie: 'Routine', diagnose: 'Blutabnahme zur Einsendung ins Labor...', arzt: 'Dr. C', details: 3},
-  {datum: '03.02.2018', kategorie: 'Rückenschmerzen', diagnose: 'Patient äußert Beschwerden im Iliosakralgelenk...', arzt: 'Dr. A', details: 4},
+const ELEMENT_DATA: Rezept[] = [
+  {datum: '12.05.2018', medikamentname: 'Ebastel', dosierung: '2x tgl.', arzt: 'Dr. A', details: 1},
 ];
