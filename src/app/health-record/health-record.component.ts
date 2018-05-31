@@ -8,7 +8,7 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class HealthRecordComponent implements OnInit {
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['datum', 'kategorie', 'diagnose', 'arzt', 'details'];
   ds = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -23,23 +23,18 @@ export class HealthRecordComponent implements OnInit {
 
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface Behandlung {
+  datum: string;
+  kategorie: string;
+  diagnose: string;
+  arzt: string;
+  details: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const ELEMENT_DATA: Behandlung[] = [
+  {datum: '12.05.2018', kategorie: 'Allergie', diagnose: 'Patient reagiert auf Pollen...', arzt: 'Dr. A', details: 1},
+  {datum: '11.05.2018', kategorie: 'Routine', diagnose: 'Blutabnahme zur Einsendung ins Labor...', arzt: 'Dr. B', details: 2},
+  {datum: '04.04.2018', kategorie: 'Routine', diagnose: 'Blutabnahme zur Einsendung ins Labor...', arzt: 'Dr. C', details: 3},
+  {datum: '03.02.2018', kategorie: 'Rückenschmerzen', diagnose: 'Patient äußert Beschwerden im Iliosakralgelenk...', arzt: 'Dr. A', details: 4},
 ];
 
