@@ -21,6 +21,7 @@ import {MatOptionModule, MatSelectModule} from '@angular/material';
 import { SmartRecipeOverviewComponent } from './smart-recipe-overview/smart-recipe-overview.component';
 import { PatientOverviewComponent } from './patient-overview/patient-overview.component';
 import { AccessRequestComponent } from './access-request/access-request.component';
+import { SickNoteOverviewComponent } from './sick-note-overview/sick-note-overview.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'patient-overview', component: PatientOverviewComponent},
   {path: 'access-requests', component: AccessRequestComponent},
+  {path: 'sick-note-overview', component: SickNoteOverviewComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     HealthRecordComponent,
     SmartRecipeOverviewComponent,
     PatientOverviewComponent,
-    AccessRequestComponent
+    AccessRequestComponent,
+    SickNoteOverviewComponent
   ],
   imports: [
     RouterModule.forRoot(
