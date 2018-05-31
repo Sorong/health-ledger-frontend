@@ -7,13 +7,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TherapyDetailsComponent } from './therapy-details/therapy-details.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatOptionModule, MatSelectModule} from '@angular/material';
 
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'therapy-details', component: TherapyDetailsComponent},
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  }, {
+    path: 'therapy-details',
+    component: TherapyDetailsComponent
   }
 ];
 
@@ -21,7 +28,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    TherapyDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -31,7 +39,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule, FormsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h1 class="mat-display-1">Health Ledger</h1>
+
+
+
+
+  <mat-form-field>
+    <mat-select placeholder="Kategorie" [formControl]="detailsCategory" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let item of details" [value]="details">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="detailsCategory.hasError('required')">Bitte wählen Sie eine Kategorie</mat-error>
+    <mat-hint>{{detailsCategory.value?.name}}</mat-hint>
+  </mat-form-field>
+
+</div>
