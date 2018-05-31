@@ -11,7 +11,6 @@ import {
 } from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import { QRCodeModule } from 'angularx-qrcode';
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -90,7 +89,6 @@ const appRoutes: Routes = [
     MatInputModule,
     MatTableModule,
     QRCodeModule,
-    ZXingScannerModule,
     MatCheckboxModule,
   ],
   exports: [],
