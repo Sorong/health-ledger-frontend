@@ -8,6 +8,7 @@ import {
   MatNativeDateModule,
   MatTableModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -23,6 +24,8 @@ import { PatientOverviewComponent } from './patient-overview/patient-overview.co
 import { AccessRequestComponent } from './access-request/access-request.component';
 import { SickNoteOverviewComponent } from './sick-note-overview/sick-note-overview.component';
 import { SmartRecipeDetailsComponent } from './smart-recipe-details/smart-recipe-details.component';
+import { QrCodeComponent } from './qr-code/qr-code.component';
+
 
 
 const appRoutes: Routes = [
@@ -35,6 +38,7 @@ const appRoutes: Routes = [
   {path: 'patient-overview', component: PatientOverviewComponent},
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
+  {path: 'qr-code', component: QrCodeComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -54,7 +58,8 @@ const appRoutes: Routes = [
     PatientOverviewComponent,
     AccessRequestComponent,
     SickNoteOverviewComponent,
-    SmartRecipeDetailsComponent
+    SmartRecipeDetailsComponent,
+    QrCodeComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -71,7 +76,8 @@ const appRoutes: Routes = [
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    QRCodeModule
   ],
   exports: [],
   providers: [],
