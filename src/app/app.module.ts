@@ -18,23 +18,18 @@ import {RouterModule, Routes} from '@angular/router';
 import {TherapyDetailsComponent} from './therapy-details/therapy-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatOptionModule, MatSelectModule} from '@angular/material';
+import { SmartRecipeOverviewComponent } from './smart-recipe-overview/smart-recipe-overview.component';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'therapy-details', component: TherapyDetailsComponent},
   {path: 'health-record', component: HealthRecordComponent},
+  {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  }, {
-    path: 'therapy-details',
-    component: TherapyDetailsComponent
-  },
-  {
-    path: 'health-record',
-    component: HealthRecordComponent
   }
 ];
 
@@ -44,7 +39,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     TherapyDetailsComponent,
-    HealthRecordComponent
+    HealthRecordComponent,
+    SmartRecipeOverviewComponent
   ],
   imports: [
     RouterModule.forRoot(
