@@ -2,14 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {
-  MatCheckboxModule,
-  MatDatepickerModule, MatExpansionModule,
-  MatFormFieldModule,
-  MatNativeDateModule,
-  MatTableModule
-} from '@angular/material';
-import {MatInputModule} from '@angular/material';
 import { QRCodeModule } from 'angularx-qrcode';
 
 import {AppComponent} from './app.component';
@@ -19,7 +11,6 @@ import {HealthRecordComponent} from './health-record/health-record.component';
 import {RouterModule, Routes} from '@angular/router';
 import {TherapyDetailsComponent} from './therapy-details/therapy-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatOptionModule, MatSelectModule} from '@angular/material';
 import {SmartRecipeOverviewComponent} from './smart-recipe-overview/smart-recipe-overview.component';
 import {DiagnosticsComponent} from './diagnostics/diagnostics.component';
 import {PatientOverviewComponent} from './patient-overview/patient-overview.component';
@@ -70,7 +61,7 @@ const appRoutes: Routes = [
     AccessRequestDetailsUserComponent,
     AccessRequestDetailsComponent,
     QrCodeComponent,
-    QrCodeScannerComponent,
+    QrCodeScannerComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -82,14 +73,9 @@ const appRoutes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     //Therapy-Details:
-    FormsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
+    FormsModule, ReactiveFormsModule,
     //End-TherapyDetails
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    QRCodeModule,
-    MatCheckboxModule,
+    QRCodeModule
   ],
   exports: [],
   providers: [],
