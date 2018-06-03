@@ -4,7 +4,16 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
     <span>Health Ledger</span>
+
+    <span class="hl-toolbar-filler"></span>
+    
+    <mat-icon *ngIf=name>account_circle</mat-icon>
+    <span *ngIf=name>
+      {{name}}
+    </span>
+
   </mat-toolbar>
 
   <mat-sidenav-container class="hl-sidenav-container">
