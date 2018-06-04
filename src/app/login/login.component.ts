@@ -1,3 +1,4 @@
+import { StorageService } from './../services/storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit() {
   }
 
   onChange(event) {
+    this.storageService.setItem('name', 'Max Mustermann');
     var files = event.srcElement.files;
     console.log(files);
+    location.reload();
   }
 }
