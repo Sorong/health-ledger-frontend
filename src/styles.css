@@ -1,3 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body { margin: 0; }
+
+table {
+  width: 100%;
+}
+
+thead {
+  border-bottom: 1px solid #000;
+}
+
+thead th {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+th, td {
+  padding: 2px;
+}
+
+/* responsive! */
+
+@media screen and (max-width: 600px) {
+
+  thead {
+    display: none;
+  }
+
+  table, tbody, tr, td {
+    display: block;
+  }
+
+  td {
+    padding: 6px 6px 6px 50% !important;
+    position: relative;
+  }
+
+  td:before {
+    box-sizing: border-box;
+    position: absolute;
+    content: attr(data-label);
+    top: 0;
+    left: 0;
+    padding: 2px;
+    font-weight: 500;
+    width: 50%;
+  }
+
+  tr.mat-row{
+    height: auto !important;
+  }
+
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.mat-raised-button{
+  margin-right: 5px !important;
+}

@@ -39,5 +39,4 @@ export class RestServiceService {
   postTreatments(pub_key: string){
 	  
   }
-    
 }
