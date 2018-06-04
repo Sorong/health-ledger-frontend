@@ -1,4 +1,4 @@
-import Result from '../models/result.model';
+import Result from './result.model';
 
 export class Request{
     id: string;
