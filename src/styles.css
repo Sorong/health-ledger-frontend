@@ -35,7 +35,7 @@ th, td {
   }
 
   td {
-    padding-left: 50% !important;
+    padding: 6px 6px 6px 50% !important;
     position: relative;
   }
 
@@ -46,11 +46,20 @@ th, td {
     top: 0;
     left: 0;
     padding: 2px;
-    font-weight: bold;
+    font-weight: 500;
     width: 50%;
   }
 
   tr.mat-row{
     height: auto !important;
   }
+
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.mat-raised-button{
+  margin-right: 5px !important;
 }
