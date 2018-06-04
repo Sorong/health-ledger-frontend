@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RequestForm} from '../../models/requestForm.model';
 import { Treatment} from '../../models/treatment.model';
+import { PERSCRIPTIONS } from '../mocks/mock-SmartPerscription';
+import { REQUESTS } from '../mocks/mock-requests';
+import { USERS } from '../mocks/mock-users'
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +11,33 @@ import { Treatment} from '../../models/treatment.model';
 export class RestServiceService {
 
   constructor() { }
-
-  getSmartPresciption(id: number){
-
+  
+  getUser(pub_key: string){
+	 return USERS;
+  }
+  
+  postUser(pub_key: string, user: Participant){
+	    
+  }
+    
+  getRequests(pub_key: string){
+	  return REQUESTS;
+  }
+  
+  postRequests(pub_key: string){
+	  
+  }
+  
+  putRequests(pub_key: string, id: string){
+	  
+  }
+  
+  getTreatments(pub_key: string){
+	  return TREATMENTS;
   }
 
-  getTreatmentSince(timestamp: number){
-
+  postTreatments(pub_key: string){
+	  
   }
-
-  getTreatmentForPatient()
-
-  getRequest(requesterPublicKey: string){
-
-  }
-
-  sendRequest(request: RequestForm){
-
-  }
-
-  sendTreatment(treatment: Treatment){
-
-  }
+    
 }
