@@ -20,6 +20,7 @@ tr:nth-child(even) {
 
 th, td {
   padding: 2px;
+  word-wrap: break-word;
 }
 
 /* responsive! */
