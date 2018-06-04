@@ -1,8 +1,6 @@
-import { Participant } from '../participant.model';
+import { Participant } from '../../models/participant.model.interface';
+import { RequestForm } from '../../models/requestForm.model'
 
 export const USERS: Participant[] = [
-  {publicKey: '1337', treatment: []},
-  {publicKey: '4242', treatment: []},
-  {publicKey: '6969', treatment: []},
-  {publicKey: '0000', treatment: []},
+  {publicKey: '1337', request: []},
 ];

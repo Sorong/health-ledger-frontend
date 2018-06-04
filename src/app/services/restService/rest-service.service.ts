@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { RequestForm} from '../../models/requestForm.model';
 import { Treatment} from '../../models/treatment.model';
-import { PERSCRIPTIONS } from '../mocks/mock-SmartPerscription';
-import { REQUESTS } from '../mocks/mock-requests';
-import { USERS } from '../mocks/mock-users'
+import { Participant} from '../../models/participant.model.interface';
+import { PERSCRIPTIONS } from '../../models/mocks/mock-SmartPerscription';
+import { REQUESTS } from '../../models/mocks/mock-requests';
+import { USERS } from '../../models/mocks/mock-users'
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class RestServiceService {
   }
   
   getTreatments(pub_key: string){
-	  return TREATMENTS;
+	  //return TREATMENTS;
   }
 
   postTreatments(pub_key: string){
