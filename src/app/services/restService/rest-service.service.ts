@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { RequestForm} from '../../models/requestForm.model';
 import { Treatment} from '../../models/treatment.model';
 
@@ -30,4 +30,4 @@ export class RestServiceService {
   sendTreatment(treatment: Treatment){
 
   }
-}
+}*/
