@@ -1,6 +1,6 @@
-import Result from '../models/result.model';
+import { Result }from '../models/result.model';
 
-export class Request{
+export class RequestForm{
     id: string;
     requester: string;
     requesterPublicKey: string;
