@@ -23,6 +23,7 @@ import { QrCodeComponent } from './views/qr-code/qr-code.component';
 import { QrCodeScannerComponent } from './views/qr-code-scanner/qr-code-scanner.component';
 import { OverviewComponent } from './views/overview/overview.component';
 import { EmployeeOverviewComponent } from './views/employee-overview/employee-overview.component';
+import {ZXingScannerModule} from '@zxing/ngx-scanner';
 
 
 
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     FormsModule, ReactiveFormsModule,
-    QRCodeModule
+    QRCodeModule,
+    ZXingScannerModule.forRoot()
   ],
   exports: [],
   providers: [],
