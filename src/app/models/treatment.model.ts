@@ -1,4 +1,5 @@
-import Perscription from '../models/perscription.model';
+import { Perscription } from '../models/perscription.model';
+import { Attestation } from '../models/attestation.model';
 
 export class Treatment{
 	id: string;
