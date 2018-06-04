@@ -21,6 +21,7 @@ import {AccessRequestDetailsUserComponent} from './views/access-request-details-
 import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
 import { QrCodeComponent } from './views/qr-code/qr-code.component';
 import { QrCodeScannerComponent } from './views/qr-code-scanner/qr-code-scanner.component';
+import {ZXingScannerModule} from '@zxing/ngx-scanner';
 
 
 
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
     //Therapy-Details:
     FormsModule, ReactiveFormsModule,
     //End-TherapyDetails
-    QRCodeModule
+    QRCodeModule,
+    ZXingScannerModule.forRoot()
   ],
   exports: [],
   providers: [],
