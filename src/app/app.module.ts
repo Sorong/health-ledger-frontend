@@ -21,6 +21,8 @@ import {AccessRequestDetailsUserComponent} from './views/access-request-details-
 import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
 import { QrCodeComponent } from './views/qr-code/qr-code.component';
 import { QrCodeScannerComponent } from './views/qr-code-scanner/qr-code-scanner.component';
+import { OverviewComponent } from './views/overview/overview.component';
+import { EmployeeOverviewComponent } from './views/employee-overview/employee-overview.component';
 
 
 
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
   {path: 'access-request-details', component: AccessRequestDetailsComponent},
   {path: 'qr-code', component: QrCodeComponent},
   {path: 'qr-code-scanner', component: QrCodeScannerComponent},
+  {path: 'employee-overview', component: EmployeeOverviewComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -61,7 +64,9 @@ const appRoutes: Routes = [
     AccessRequestDetailsUserComponent,
     AccessRequestDetailsComponent,
     QrCodeComponent,
-    QrCodeScannerComponent
+    QrCodeScannerComponent,
+    OverviewComponent,
+    EmployeeOverviewComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -72,9 +77,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    //Therapy-Details:
     FormsModule, ReactiveFormsModule,
-    //End-TherapyDetails
     QRCodeModule
   ],
   exports: [],
