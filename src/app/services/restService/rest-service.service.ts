@@ -1,33 +1,45 @@
-import { Injectable } from '@angular/core';
-import { RequestForm} from '../../models/requestForm.model';
-import { Treatment} from '../../models/treatment.model';
+import {Injectable} from '@angular/core';
+import {RequestForm} from '../../models/requestForm.model';
+import {Treatment} from '../../models/treatment.model';
+import {Participant} from '../../models/participant.model.interface';
+import {PERSCRIPTIONS} from '../../models/mocks/mock-SmartPerscription';
+import {REQUESTS} from '../../models/mocks/mock-requests';
+import {USERS} from '../../models/mocks/mock-users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestServiceService {
 
-  constructor() { }
+  constructor() {
+  }
 
-  getSmartPresciption(id: number){
+  getUser(pub_key: string) {
+    return USERS;
+  }
+
+  postUser(pub_key: string, user: Participant) {
 
   }
 
-  getTreatmentSince(timestamp: number){
+
+  getRequests(pub_key: string) {
+    return REQUESTS;
+  }
+
+  postRequests(pub_key: string) {
 
   }
 
-  //getTreatmentForPatient(){}
-
-  getRequest(requesterPublicKey: string){
+  putRequests(pub_key: string, id: string) {
 
   }
 
-  sendRequest(request: RequestForm){
-
+  getTreatments(pub_key: string) {
+    //return TREATMENTS;
   }
 
-  sendTreatment(treatment: Treatment){
+  postTreatments(pub_key: string) {
 
   }
 }

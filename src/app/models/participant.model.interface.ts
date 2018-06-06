@@ -1,6 +1,6 @@
-import { RequestForm } from '../models/requestForm.model'
+import { RequestForm } from '../models/requestForm.model';
 
-export interface Participant{
+export interface Participant {
     publicKey: string;
-    Request: Array<RequestForm>
+    request: Array<RequestForm>;
 }

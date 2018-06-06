@@ -3,5 +3,5 @@ import { RequestForm } from '../models/requestForm.model'
 
 export class InsuranceComapny implements Participant{
     publicKey: string;
-    Request: Array<RequestForm>
+    request: Array<RequestForm>
 }

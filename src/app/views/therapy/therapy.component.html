@@ -1,4 +1,3 @@
-<div fxLayout="column" fxLayoutAlign="center center">
 <h1 class="mat-display-1">Health Ledger</h1>
 
 
@@ -27,7 +26,8 @@
 
 <div fxLayout="row" *ngIf="!editable && treatment?.attestation != null">
   <mat-form-field>
-    <input matInput [matDatepicker]="picker1" [value]="treatment?.attestation?.incapable_since" placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date"
+    <input matInput [matDatepicker]="picker1" [value]="treatment?.attestation?.incapable_since"
+           placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date"
            readonly>
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
@@ -66,15 +66,16 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker1" [value]="treatment?.attestation?.incapable_since" placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date" readonly>
+      <input matInput [matDatepicker]="picker1" [value]="treatment?.attestation?.incapable_since"
+             placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date" readonly>
       <mat-datepicker #picker1></mat-datepicker>
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Ende der Arbeitsunfähigkeit" [value]="treatment?.attestation?.incapable_until" [formControl]="serializedDate" readonly>
+      <input matInput [matDatepicker]="picker2" placeholder="Ende der Arbeitsunfähigkeit"
+             [value]="treatment?.attestation?.incapable_until" [formControl]="serializedDate" readonly>
       <mat-datepicker #picker2></mat-datepicker>
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>
-</div>
