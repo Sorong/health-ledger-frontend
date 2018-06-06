@@ -8,18 +8,24 @@ import {FormControl, Validators} from '@angular/forms';
 })
 
 export class DiagnosticsComponent implements OnInit {
-  detailsCategory = new FormControl('', [Validators.required]);
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
-  details = [
-    {name: 'Allergie'},
-    {name: 'Akute Erkrankungen'},
-    {name: 'Chronische Erkrankungen'},
-    {name: 'Sonstiges'},
-    {name: 'Mag Rosenkohl'}
-  ];
+  treatment = {
+    id: '1', category: 'foo', diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date()
 
-  constructor() { }
+    }
+  };
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

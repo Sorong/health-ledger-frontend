@@ -1,4 +1,4 @@
-export class Perscription{
+export class Prescription{
 	drug: string;
 	patient_name: string;
 	doctor_name: string;

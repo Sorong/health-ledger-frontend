@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-therapy-details',
@@ -7,12 +7,20 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./therapy-details.component.css']
 })
 export class TherapyDetailsComponent implements OnInit {
-
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
-  category = "Mag Rosenkohl"
-  diagnose = "Massive psychische Störung, wer mag schon Rosenkohl?"
-  recipe = "1kg Pizza pro Tag"
+  treatment = {
+    id: '1', category: 'foo', diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date(0)
+    }
+  };
 
 
   constructor() { }

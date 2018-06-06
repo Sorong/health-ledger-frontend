@@ -1,33 +1,6 @@
+<app-therapy [treatment]="treatment"> </app-therapy>
 <div fxLayout="column" fxLayoutAlign="center center">
-  <h1 class="mat-display-1">Health Ledger</h1>
-
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Kategorie" value={{category}} readonly>
-  </mat-form-field>
-
-  <mat-form-field>
-    <textarea matInput placeholder="Diagnose" value={{diagnose}} readonly></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <textarea matInput placeholder="Rezept" value={{recipe}} readonly></textarea>
-  </mat-form-field>
-
-
-  <div fxLayout="row">
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Beginn der Arbeitsunfähigkeit" [formControl]="date"
-             readonly>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Ende der Arbeitsunfähigkeit" [formControl]="serializedDate"
-             readonly>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-  </div>
   <button mat-raised-button>Zurück</button>
-
-
 </div>
+
+

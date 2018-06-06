@@ -17,7 +17,7 @@ export class RestServiceService {
 
   }
 
-  getTreatmentForPatient()
+  //getTreatmentForPatient(){}
 
   getRequest(requesterPublicKey: string){
 

@@ -1,11 +1,11 @@
-import { Perscription } from '../models/perscription.model';
+import { Prescription } from './prescription.model';
 import { Attestation } from '../models/attestation.model';
 
 export class Treatment{
 	id: string;
 	category: Category;
 	diagnose: string;
-	prescription: Perscription;
+	prescription: Prescription;
 	attestation: Attestation;
 }
 

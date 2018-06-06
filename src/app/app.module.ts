@@ -24,6 +24,7 @@ import { QrCodeScannerComponent } from './views/qr-code-scanner/qr-code-scanner.
 import { OverviewComponent } from './views/overview/overview.component';
 import { EmployeeOverviewComponent } from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
+import { TherapyComponent } from './views/therapy/therapy.component';
 
 
 
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     QrCodeComponent,
     QrCodeScannerComponent,
     OverviewComponent,
-    EmployeeOverviewComponent
+    EmployeeOverviewComponent,
+    TherapyComponent
   ],
   imports: [
     RouterModule.forRoot(
