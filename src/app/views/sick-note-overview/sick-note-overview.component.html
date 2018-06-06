@@ -1,0 +1,26 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="ds" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="einstelldatum">
+    <th mat-header-cell *matHeaderCellDef> Einstelldatum </th>
+    <td mat-cell *matCellDef="let element" data-label="Einstelldatum"> {{element.einstelldatum}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="von">
+    <th mat-header-cell *matHeaderCellDef> Von </th>
+    <td mat-cell *matCellDef="let element" data-label="Von"> {{element.von}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="bis">
+    <th mat-header-cell *matHeaderCellDef> Bis </th>
+    <td mat-cell *matCellDef="let element" data-label="Bis"> {{element.bis}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br>
+<button mat-raised-button>Zurück</button>
