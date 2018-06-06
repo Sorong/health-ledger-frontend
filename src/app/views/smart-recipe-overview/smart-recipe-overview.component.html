@@ -4,29 +4,31 @@
 
 <table mat-table [dataSource]="ds" class="mat-elevation-z8">
 
-  <ng-container matColumnDef="datum">
+  <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef> Datum </th>
-    <td mat-cell *matCellDef="let element" data-label="Datum"> {{element.datum}} </td>
+    <td mat-cell *matCellDef="let element" data-label="Datum"> Not Implemented </td>
   </ng-container>
 
-  <ng-container matColumnDef="medikamentname">
+  <ng-container matColumnDef="drug">
     <th mat-header-cell *matHeaderCellDef> Medikamentname </th>
-    <td mat-cell *matCellDef="let element" data-label="Medikamentname"> {{element.medikamentname}} </td>
+    <td mat-cell *matCellDef="let element" data-label="Medikamentname"> {{element?.prescription?.drug}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="dosierung">
+  <ng-container matColumnDef="dose">
     <th mat-header-cell *matHeaderCellDef> Dosierung </th>
-    <td mat-cell *matCellDef="let element" data-label="Dosierung"> {{element.dosierung}} </td>
+    <td mat-cell *matCellDef="let element" data-label="Dosierung"> Not Implemented</td>
   </ng-container>
 
-  <ng-container matColumnDef="arzt">
+  <ng-container matColumnDef="doctor">
     <th mat-header-cell *matHeaderCellDef> Arzt </th>
-    <td mat-cell *matCellDef="let element" data-label="Arzt"> {{element.arzt}} </td>
+    <td mat-cell *matCellDef="let element" data-label="Arzt"> {{element?.prescription?.doctor_name}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="details">
+  <ng-container matColumnDef="redeemed">
     <th mat-header-cell *matHeaderCellDef> Details </th>
-    <td mat-cell *matCellDef="let element" data-label="Details"> <a href="./#{{element.details}}">Rezeptdetails öffnen {{element.details}}</a> </td>
+    <td mat-cell *matCellDef="let element" data-label="Details">
+      {{element.redeemed ? "Geschlossen" : "Offen"}}
+      <button mat-raised-button (click)="selectElement(element?.id)">Rezeptdetails öffnen</button>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

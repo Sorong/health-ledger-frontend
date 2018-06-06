@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {RequestForm} from '../../models/requestForm.model';
 import {Treatment} from '../../models/treatment.model';
 import {Participant} from '../../models/participant.model.interface';
-import {PERSCRIPTIONS} from '../../models/mocks/mock-SmartPerscription';
+import {PRESCRIPTIONS} from '../../models/mocks/mock-SmartPerscription';
 import {REQUESTS} from '../../models/mocks/mock-requests';
 import {USERS} from '../../models/mocks/mock-users';
 

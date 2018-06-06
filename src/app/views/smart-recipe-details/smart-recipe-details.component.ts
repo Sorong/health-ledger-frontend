@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Prescription} from '../../models/prescription.model';
 
 @Component({
   selector: 'app-smart-recipe-details',
@@ -6,8 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./smart-recipe-details.component.css']
 })
 export class SmartRecipeDetailsComponent implements OnInit {
+  treatment = {
+    id: '1', category: null, diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date(0)
+    }
+  };
 
-  constructor() { }
+  @Input()
+  id: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

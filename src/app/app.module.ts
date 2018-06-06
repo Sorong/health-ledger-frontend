@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { QRCodeModule } from 'angularx-qrcode';
+import {QRCodeModule} from 'angularx-qrcode';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -19,13 +19,12 @@ import {SickNoteOverviewComponent} from './views/sick-note-overview/sick-note-ov
 import {SmartRecipeDetailsComponent} from './views/smart-recipe-details/smart-recipe-details.component';
 import {AccessRequestDetailsUserComponent} from './views/access-request-details-user/access-request-details-user.component';
 import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
-import { QrCodeComponent } from './views/qr-code/qr-code.component';
-import { QrCodeScannerComponent } from './views/qr-code-scanner/qr-code-scanner.component';
-import { OverviewComponent } from './views/overview/overview.component';
-import { EmployeeOverviewComponent } from './views/employee-overview/employee-overview.component';
+import {QrCodeComponent} from './views/qr-code/qr-code.component';
+import {QrCodeScannerComponent} from './views/qr-code-scanner/qr-code-scanner.component';
+import {OverviewComponent} from './views/overview/overview.component';
+import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
-import { TherapyComponent } from './views/therapy/therapy.component';
-
+import {TherapyComponent} from './views/therapy/therapy.component';
 
 
 const appRoutes: Routes = [
@@ -82,7 +81,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     FormsModule, ReactiveFormsModule,
     QRCodeModule,
-    ZXingScannerModule.forRoot()
+    ZXingScannerModule.forRoot(),
   ],
   exports: [],
   providers: [],
