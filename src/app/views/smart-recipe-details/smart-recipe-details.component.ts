@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Prescription} from '../../models/prescription.model';
 
 @Component({
   selector: 'app-smart-recipe-details',
