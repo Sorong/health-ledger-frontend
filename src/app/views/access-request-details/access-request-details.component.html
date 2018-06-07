@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="center center">
+<div>
   <div fxLayout="row">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Anfrage von:" value={{from}} readonly>
@@ -8,7 +8,7 @@
       <input matInput placeholder="Anfrage an:" value={{to}} readonly>
     </mat-form-field>
   </div>
-  <div fxLayout="row" fxLayoutGap="10px">
+  <div>
     <mat-form-field>
       <input matInput [matDatepicker]="picker1" placeholder="Einsicht ab:" [formControl]="date" readonly>
       <mat-datepicker #picker1></mat-datepicker>
@@ -50,8 +50,8 @@
       Arbeitsunfähigkeit
     </mat-checkbox>
   </div>
-
-  <div fxLayout="row">
+  <br>
+  <div>
     <button mat-raised-button>Speichern</button>
     <button mat-raised-button>Zurück</button>
   </div>
