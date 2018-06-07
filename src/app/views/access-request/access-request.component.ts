@@ -24,6 +24,7 @@ export class AccessRequestComponent implements OnInit {
   }
 
 }
+//TODO: RequestForm per getRequests als Observable
 
 export interface Anfrage {
   datum: string;

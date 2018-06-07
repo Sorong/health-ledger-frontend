@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {Category, Treatment} from '../../models/treatment.model';
 
 @Component({
   selector: 'app-health-record',
@@ -8,7 +9,7 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class HealthRecordComponent implements OnInit {
 
-  displayedColumns = ['datum', 'kategorie', 'diagnose', 'arzt', 'details'];
+  displayedColumns = ['date', 'category', 'note', 'doctor_name', 'details'];
   ds = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -23,18 +24,35 @@ export class HealthRecordComponent implements OnInit {
 
 }
 
-export interface Behandlung {
-  datum: string;
-  kategorie: string;
-  diagnose: string;
-  arzt: string;
-  details: number;
-}
 
-const ELEMENT_DATA: Behandlung[] = [
-  {datum: '12.05.2018', kategorie: 'Allergie', diagnose: 'Patient reagiert auf Pollen...', arzt: 'Dr. A', details: 1},
-  {datum: '11.05.2018', kategorie: 'Routine', diagnose: 'Blutabnahme zur Einsendung ins Labor...', arzt: 'Dr. B', details: 2},
-  {datum: '04.04.2018', kategorie: 'Routine', diagnose: 'Blutabnahme zur Einsendung ins Labor...', arzt: 'Dr. C', details: 3},
-  {datum: '03.02.2018', kategorie: 'Rückenschmerzen', diagnose: 'Patient äußert Beschwerden im Iliosakralgelenk...', arzt: 'Dr. A', details: 4},
+
+const ELEMENT_DATA: Treatment[] = [
+  {
+    id: '1', category: Category.bar, diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date(0)
+    }
+  }, {
+    id: '2', category: Category.bar, diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date(0)
+    }
+  }
 ];
 
