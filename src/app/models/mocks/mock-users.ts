@@ -1,6 +1,8 @@
-import { Participant } from '../../models/participant.model.interface';
+import { User } from '../../models/user.model.interface';
 import { RequestForm } from '../../models/requestForm.model';
 
-export const USERS: Participant[] = [
-  {publicKey: '1337', request: []},
+import {REQUESTS} from './mock-requests';
+
+export const USERS: User[] = [
+  {publicKey: '1337', request: REQUESTS},
 ];

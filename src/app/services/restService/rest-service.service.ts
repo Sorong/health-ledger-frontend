@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {RequestForm} from '../../models/requestForm.model';
 import {Treatment} from '../../models/treatment.model';
-import {Participant} from '../../models/participant.model.interface';
-import {PRESCRIPTIONS} from '../../models/mocks/mock-SmartPerscription';
+import {User} from '../../models/user.model.interface';
+
 import {REQUESTS} from '../../models/mocks/mock-requests';
 import {USERS} from '../../models/mocks/mock-users';
+import {TREATMENT} from '../../models/mocks/mock-treatment';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +16,17 @@ export class RestServiceService {
   constructor() {
   }
 
-  getUser(pub_key: string) {
-    return USERS;
+  getUser(pub_key: string): Observable<User> {
+    return of(USERS[0]);
   }
 
-  postUser(pub_key: string, user: Participant) {
+  postUser(pub_key: string, user: User) {
 
   }
 
 
-  getRequests(pub_key: string) {
-    return REQUESTS;
+  getRequests(pub_key: string): Observable<RequestForm[]> {
+    return of(REQUESTS);
   }
 
   postRequests(pub_key: string) {
@@ -35,8 +37,8 @@ export class RestServiceService {
 
   }
 
-  getTreatments(pub_key: string) {
-    //return TREATMENTS;
+  getTreatments(pub_key: string): Observable<Treatment[]> {
+    return of(TREATMENT);
   }
 
   postTreatments(pub_key: string) {
