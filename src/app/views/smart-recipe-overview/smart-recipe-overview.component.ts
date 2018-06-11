@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-import {Prescription} from '../../models/prescription.model';
 import {Router} from '@angular/router';
-import {Category, Treatment} from '../../models/treatment.model';
 import {RestServiceService} from '../../services/restService/rest-service.service';
 
 @Component({

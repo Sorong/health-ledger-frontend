@@ -21,12 +21,7 @@ export class SmartRecipeDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  refreshData(obs: Treatment[], id: any) {
-    for (const item of obs) {
-      if (item.id === id.toString()) {
-        this.treatment = item;
-        break;
-      }
-    }
+  refreshData(obs: Treatment[], id: string) {
+    this.treatment = obs.filter(entry => entry['id'] === id)[0];
   }
 }
