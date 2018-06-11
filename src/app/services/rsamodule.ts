@@ -63,7 +63,7 @@ export class RSAModule {
     * @param  {encObj} _encObj Decrypted encObj instance
     * @return {number, boolean, string} _encObj.val casted to _encObj.dtype
     */
-    private reconstructType(_encObj):object {
+    private reconstructType(_encObj: encObj):object {
         let castedObj = null;
         switch(_encObj.dtype) {
             case "number":

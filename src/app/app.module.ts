@@ -25,6 +25,7 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -82,9 +83,17 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     QRCodeModule,
     ZXingScannerModule.forRoot(),
+    //End-TherapyDetails
+    HttpClientModule
   ],
   exports: [],
-  providers: [],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpInterceptor,
+        multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
