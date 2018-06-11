@@ -2,28 +2,30 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { QRCodeModule } from 'angularx-qrcode';
+import {QRCodeModule} from 'angularx-qrcode';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {LoginComponent} from './login/login.component';
-import {HealthRecordComponent} from './health-record/health-record.component';
+import {LoginComponent} from './views/login/login.component';
+import {HealthRecordComponent} from './views/health-record/health-record.component';
 import {RouterModule, Routes} from '@angular/router';
-import {TherapyDetailsComponent} from './therapy-details/therapy-details.component';
+import {TherapyDetailsComponent} from './views/therapy-details/therapy-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SmartRecipeOverviewComponent} from './smart-recipe-overview/smart-recipe-overview.component';
-import {DiagnosticsComponent} from './diagnostics/diagnostics.component';
-import {PatientOverviewComponent} from './patient-overview/patient-overview.component';
-import {AccessRequestComponent} from './access-request/access-request.component';
-import {SickNoteOverviewComponent} from './sick-note-overview/sick-note-overview.component';
-import {SmartRecipeDetailsComponent} from './smart-recipe-details/smart-recipe-details.component';
-import {AccessRequestDetailsUserComponent} from './access-request-details-user/access-request-details-user.component';
-import {AccessRequestDetailsComponent} from './access-request-details/access-request-details.component';
-import { QrCodeComponent } from './qr-code/qr-code.component';
-import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import {SmartRecipeOverviewComponent} from './views/smart-recipe-overview/smart-recipe-overview.component';
+import {DiagnosticsComponent} from './views/diagnostics/diagnostics.component';
+import {PatientOverviewComponent} from './views/patient-overview/patient-overview.component';
+import {AccessRequestComponent} from './views/access-request/access-request.component';
+import {SickNoteOverviewComponent} from './views/sick-note-overview/sick-note-overview.component';
+import {SmartRecipeDetailsComponent} from './views/smart-recipe-details/smart-recipe-details.component';
+import {AccessRequestDetailsUserComponent} from './views/access-request-details-user/access-request-details-user.component';
+import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
+import {QrCodeComponent} from './views/qr-code/qr-code.component';
+import {QrCodeScannerComponent} from './views/qr-code-scanner/qr-code-scanner.component';
+import {OverviewComponent} from './views/overview/overview.component';
+import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
+import {ZXingScannerModule} from '@zxing/ngx-scanner';
+import {TherapyComponent} from './views/therapy/therapy.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
 
 
 const appRoutes: Routes = [
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
   {path: 'access-request-details', component: AccessRequestDetailsComponent},
   {path: 'qr-code', component: QrCodeComponent},
   {path: 'qr-code-scanner', component: QrCodeScannerComponent},
+  {path: 'employee-overview', component: EmployeeOverviewComponent},
   {
     path: '',
     redirectTo: '/login',
@@ -63,7 +66,10 @@ const appRoutes: Routes = [
     AccessRequestDetailsUserComponent,
     AccessRequestDetailsComponent,
     QrCodeComponent,
-    QrCodeScannerComponent
+    QrCodeScannerComponent,
+    OverviewComponent,
+    EmployeeOverviewComponent,
+    TherapyComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -74,10 +80,10 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    //Therapy-Details:
     FormsModule, ReactiveFormsModule,
-    //End-TherapyDetails
     QRCodeModule,
+    ZXingScannerModule.forRoot(),
+    //End-TherapyDetails
     HttpClientModule
   ],
   exports: [],
