@@ -20,14 +20,15 @@ export class SickNoteOverviewComponent implements OnInit {
   }
   constructor() {   }
 
-  refreshTable(obs: Observable){
+  refreshTable(obs: Treatment[]){
+    console.log(typeof obs);
     obs = obs.filter(entry => entry["attestation"] !== null);
     this.ds = new MatTableDataSource(obs);
   }
 
   ngOnInit() {
     this.rest.getTreatments('KEY').subscribe(obs =>
-      this.refreshTable(obs);
+      this.refreshTable(obs)
     );
   }
 }

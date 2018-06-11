@@ -22,7 +22,7 @@
   <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef> Details </th>
     <td mat-cell *matCellDef="let element" data-label="Details">
-      <button mat-raised-button> Anfragedetails öffnen {{element.id}}</button>
+      <button mat-raised-button (click)="selectElement(element?.id)"> Anfragedetails öffnen</button>
     </td>
   </ng-container>
 
