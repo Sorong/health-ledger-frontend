@@ -26,6 +26,7 @@ import {EmployeeOverviewComponent} from './views/employee-overview/employee-over
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptor } from './interceptors/http-interceptor';
 
 
 const appRoutes: Routes = [
