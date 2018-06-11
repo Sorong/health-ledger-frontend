@@ -9,7 +9,7 @@ export class EmployeeOverviewComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+   ngOnInit() {
+   }
 
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {ActivatedRoute} from '@angular/router';
+import 'rxjs/add/operator/map';
+import {RequestForm} from '../../models/requestForm.model';
+import {RequestService} from '../../services/request.service';
 
 @Component({
   selector: 'app-access-request-details-user',
@@ -11,8 +15,23 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   to = "Van Helsing"
   displayedColumns = ['therapy', 'diagnose', 'recipe', 'incapacity'];
   ds = new MatTableDataSource(ELEMENT_DATA);
-  constructor() { }
+  requestForm: RequestForm;
+  requestService = new RequestService();
+  constructor(private route: ActivatedRoute) {
+    this.route.params.map(p => p.id).subscribe(id => {
+      this.requestService.get().subscribe(obs => this.refreshData(obs, id));
+    });
+  }
 
+  refreshData(obs: RequestForm[], id: any) {
+    console.log(obs);
+    for (const item of obs) {
+      if (item.id === id.toString()) {
+        this.requestForm = item;
+        break;
+      }
+    }
+  }
 
   ngOnInit() {
   }

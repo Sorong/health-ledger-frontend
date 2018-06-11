@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {RequestService} from '../../services/request.service';
+import {Router} from '@angular/router';
 import {RequestForm} from '../../models/requestForm.model';
 
 @Component({
@@ -19,12 +20,10 @@ export class AccessRequestComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   refreshTable(obs: RequestForm[]) {
-    console.log(obs);
-    obs = obs.filter(entry => entry['attestation'] !== null);
     this.ds = new MatTableDataSource(obs);
   }
 
@@ -34,4 +33,7 @@ export class AccessRequestComponent implements OnInit {
     );
   }
 
+  selectElement(id: string) {
+    this.router.navigate(['./access-request-details-user', id]);
+  }
 }

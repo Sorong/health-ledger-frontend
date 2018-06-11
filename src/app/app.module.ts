@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   {path: 'patient-overview', component: PatientOverviewComponent},
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
-  {path: 'access-request-details-user', component: AccessRequestDetailsUserComponent},
+  {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
   {path: 'access-request-details', component: AccessRequestDetailsComponent},
   {path: 'qr-code', component: QrCodeComponent},
   {path: 'qr-code-scanner', component: QrCodeScannerComponent},
