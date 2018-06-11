@@ -12,8 +12,7 @@ import {RestServiceService} from '../../services/restService/rest-service.servic
 })
 export class SmartRecipeOverviewComponent implements OnInit {
 
-  serv = new RestServiceService();
-  data = [];
+  service = new RestServiceService();
   displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed', 'details'];
   ds = new MatTableDataSource([]);
 
@@ -27,45 +26,13 @@ export class SmartRecipeOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.serv.getTreatments('KEY').subscribe(obs =>
+    this.service.getTreatments(null).subscribe(obs =>
       this.ds = new MatTableDataSource(obs)
     );
   }
 
 
   selectElement(id: string) {
-    this.router.navigate(['./smart-recipe-details']);
+    this.router.navigate(['./smart-recipe-details', id]);
   }
 }
-
-
-const ELEMENT_DATA: Treatment[] = [
-  {
-    id: '1', category: Category.bar, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  }, {
-    id: '2', category: Category.bar, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  }
-];
-
