@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class HttpInterceptor implements HttpInterceptor {
+export class HttpHeaderProxy implements HttpInterceptor {
     constructor() { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
