@@ -9,4 +9,8 @@ export class Treatment{
 	attestation: Attestation;
 }
 
-enum Category{foo, bar, baz}
+export enum Category{
+	foo = "Foo", 
+	bar = "bar", 
+	baz = "baz"
+}

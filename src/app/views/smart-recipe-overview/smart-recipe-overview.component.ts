@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {Prescription} from '../../models/prescription.model';
+import {Router} from '@angular/router';
+import {Category, Treatment} from '../../models/treatment.model';
 
 @Component({
   selector: 'app-smart-recipe-overview',
@@ -7,7 +10,8 @@ import {MatTableDataSource} from '@angular/material';
   styleUrls: ['./smart-recipe-overview.component.css']
 })
 export class SmartRecipeOverviewComponent implements OnInit {
-  displayedColumns = ['datum', 'medikamentname', 'dosierung', 'arzt', 'details'];
+
+  displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed'];
   ds = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -15,21 +19,47 @@ export class SmartRecipeOverviewComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.ds.filter = filterValue;
   }
-  constructor() { }
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
+
+  selectElement(id: string) {
+    this.router.navigate(['./smart-recipe-details']);
+  }
 }
 
-export interface Rezept {
-  datum: string;
-  medikamentname: string;
-  dosierung: string;
-  arzt: string;
-  details: number;
-}
 
-const ELEMENT_DATA: Rezept[] = [
-  {datum: '12.05.2018', medikamentname: 'Ebastel', dosierung: '2x tgl.', arzt: 'Dr. A', details: 1},
+const ELEMENT_DATA: Treatment[] = [
+  {
+    id: '1', category: Category.bar, diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date(0)
+    }
+  }, {
+    id: '2', category: Category.bar, diagnose: 'Aids', prescription: {
+      drug: 'Axelavir',
+      patient_name: 'Klim',
+      doctor_name: 'Zero Sr.',
+      until_date: new Date(),
+      note: 'Water is wet',
+      redeemed: false
+    }, attestation: {
+      is_incapable: true,
+      incapable_until: new Date(),
+      incapable_since: new Date(0)
+    }
+  }
 ];
+

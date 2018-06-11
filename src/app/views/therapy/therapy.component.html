@@ -1,6 +1,3 @@
-<h1 class="mat-display-1">Health Ledger</h1>
-
-
 <mat-form-field class="example-full-width" *ngIf="!editable && treatment?.category != null">
   <input matInput placeholder="Kategorie" value={{treatment?.category}} readonly>
 </mat-form-field>
@@ -19,7 +16,7 @@
   <textarea matInput placeholder="Diagnose" value={{treatment?.diagnose}} [readonly]="!editable"></textarea>
 </mat-form-field>
 
-<mat-form-field *ngIf="editable || (!editable && treatment?.prescription != null)">
+<mat-form-field *ngIf="(!editable && treatment?.prescription != null)">
   <textarea matInput placeholder="Rezept" value={{treatment?.prescription?.note}} [readonly]="!editable"></textarea>
 </mat-form-field>
 

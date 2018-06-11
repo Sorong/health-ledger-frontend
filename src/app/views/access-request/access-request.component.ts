@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 
 @Component({
@@ -8,6 +8,7 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class AccessRequestComponent implements OnInit {
   displayedColumns = ['datum', 'antragsteller', 'status', 'details'];
+  //TODO: RequestForm nutzen
   ds = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -15,12 +16,15 @@ export class AccessRequestComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.ds.filter = filterValue;
   }
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
 }
+//TODO: RequestForm per getRequests als Observable
 
 export interface Anfrage {
   datum: string;
