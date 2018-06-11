@@ -29,7 +29,7 @@ import {TherapyComponent} from './views/therapy/therapy.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'therapy-details', component: TherapyDetailsComponent},
+  {path: 'therapy-details/:id', component: TherapyDetailsComponent},
   {path: 'health-record', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
