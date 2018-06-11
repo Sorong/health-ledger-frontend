@@ -1,4 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Treatment} from '../../models/treatment.model';
+import 'rxjs/add/operator/map';
+import {TreatmentService} from '../../services/treatment.service';
 
 @Component({
   selector: 'app-smart-recipe-details',
@@ -6,28 +10,18 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./smart-recipe-details.component.css']
 })
 export class SmartRecipeDetailsComponent implements OnInit {
-  treatment = {
-    id: '1', category: null, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  };
-
-  @Input()
-  id: string;
-
-  constructor() {
+  treatmentService = new TreatmentService();
+  treatment: Treatment;
+  constructor(private route: ActivatedRoute) {
+    this.route.params.map(p => p.id).subscribe(id => {
+      this.treatmentService.get().subscribe(obs => this.refreshData(obs, id));
+    });
   }
 
   ngOnInit() {
   }
 
+  refreshData(obs: Treatment[], id: string) {
+    this.treatment = obs.filter(entry => entry['id'] === id)[0];
+  }
 }
