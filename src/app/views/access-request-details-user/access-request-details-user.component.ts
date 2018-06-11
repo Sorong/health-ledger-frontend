@@ -3,7 +3,9 @@ import {MatTableDataSource} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/map';
 import {RequestForm} from '../../models/requestForm.model';
+import {Treatment} from '../../models/treatment.model';
 import {RequestService} from '../../services/request.service';
+import {TreatmentService} from '../../services/treatment.service';
 
 @Component({
   selector: 'app-access-request-details-user',
@@ -11,32 +13,42 @@ import {RequestService} from '../../services/request.service';
   styleUrls: ['./access-request-details-user.component.css']
 })
 export class AccessRequestDetailsUserComponent implements OnInit {
-  from = "Dr. Acula"
-  to = "Van Helsing"
+  from = ""
+  to = ""
   displayedColumns = ['therapy', 'diagnose', 'recipe', 'incapacity'];
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  ds = new MatTableDataSource([]);
   requestForm: RequestForm;
   requestService = new RequestService();
+  treatmentService = new TreatmentService();
+  treatments = [];
+
   constructor(private route: ActivatedRoute) {
+    this.treatmentService.get().subscribe(obs => {this.treatments = obs});
     this.route.params.map(p => p.id).subscribe(id => {
       this.requestService.get().subscribe(obs => this.refreshData(obs, id));
     });
   }
 
-  refreshData(obs: RequestForm[], id: any) {
+  refreshData(obs: RequestForm[], id: string) {
     for (const item of obs) {
       if (item.id === id.toString()) {
         this.requestForm = item;
-        console.log(item);
         break;
       }
     }
+
+    let items = new Array<ListItem>();
+    for(let t of this.treatments)
+      items.push(new ListItem(this.requestForm, t));
+
+    this.ds = new MatTableDataSource(items);
   }
 
   ngOnInit() {
   }
 }
-export class CheckboxAttributes {
+
+class CheckboxAttributes {
   checked: boolean;
   indeterminate: boolean;
   disabled: boolean;
@@ -48,15 +60,16 @@ export class CheckboxAttributes {
   }
 }
 
-export interface Therapy {
-  therapy: string;
-  diagnose: CheckboxAttributes;
+class ListItem {
+  item:Treatment;
+  treatment: CheckboxAttributes;
   recipe: CheckboxAttributes;
-  incapacity: CheckboxAttributes;
-}
+  attestation: CheckboxAttributes;
 
-const ELEMENT_DATA: Therapy[] = [
-  {therapy: 'Behandlung 1', diagnose : new CheckboxAttributes(false), recipe : new CheckboxAttributes(true), incapacity : new CheckboxAttributes(false)},
-  {therapy: 'Behandlung 1', diagnose : new CheckboxAttributes(true), recipe : new CheckboxAttributes(true), incapacity : new CheckboxAttributes(false)},
-  {therapy: 'Behandlung 1', diagnose : new CheckboxAttributes(true), recipe : new CheckboxAttributes(true), incapacity : new CheckboxAttributes(false)}
-];
+  constructor(request:RequestForm, treatment:Treatment) {
+    this.item = treatment;
+    this.treatment = new CheckboxAttributes(request.treatment);
+    this.recipe = new CheckboxAttributes(request.recipe);
+    this.attestation = new CheckboxAttributes(request.attestation);
+  }
+}
