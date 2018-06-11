@@ -21,6 +21,8 @@ import {AccessRequestDetailsUserComponent} from './access-request-details-user/a
 import {AccessRequestDetailsComponent} from './access-request-details/access-request-details.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 
@@ -75,10 +77,17 @@ const appRoutes: Routes = [
     //Therapy-Details:
     FormsModule, ReactiveFormsModule,
     //End-TherapyDetails
-    QRCodeModule
+    QRCodeModule,
+    HttpClientModule
   ],
   exports: [],
-  providers: [],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpInterceptor,
+        multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
