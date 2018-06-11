@@ -21,7 +21,7 @@ export class RestServiceService {
   }
 
   postUser(pub_key: string, user: User) {
-
+    console.log(pub_key);
   }
 
 
@@ -30,11 +30,11 @@ export class RestServiceService {
   }
 
   postRequests(pub_key: string) {
-
+    console.log(pub_key);
   }
 
   putRequests(pub_key: string, id: string) {
-
+    console.log(pub_key + id);
   }
 
   getTreatments(pub_key: string): Observable<Treatment[]> {
@@ -42,6 +42,6 @@ export class RestServiceService {
   }
 
   postTreatments(pub_key: string) {
-
+    console.log(pub_key);
   }
 }
