@@ -16,7 +16,7 @@ export class TreatmentService {
     return of(TREATMENT);
   }
 
-  post(pub_key: string): Observable {
-    return Observable.empty();
+  post(pub_key: string): Observable<never> {
+    return new Observable<never>(subscriber => subscriber.complete());
   }
 }
