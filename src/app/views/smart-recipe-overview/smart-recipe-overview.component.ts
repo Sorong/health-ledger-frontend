@@ -3,6 +3,7 @@ import {MatTableDataSource} from '@angular/material';
 import {Prescription} from '../../models/prescription.model';
 import {Router} from '@angular/router';
 import {Category, Treatment} from '../../models/treatment.model';
+import {RestServiceService} from '../../services/restService/rest-service.service';
 
 @Component({
   selector: 'app-smart-recipe-overview',
@@ -11,8 +12,10 @@ import {Category, Treatment} from '../../models/treatment.model';
 })
 export class SmartRecipeOverviewComponent implements OnInit {
 
-  displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed'];
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  serv = new RestServiceService();
+  data = [];
+  displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed', 'details'];
+  ds = new MatTableDataSource([]);
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -24,6 +27,9 @@ export class SmartRecipeOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.serv.getTreatments('KEY').subscribe(obs =>
+      this.ds = new MatTableDataSource(obs)
+    );
   }
 
 
