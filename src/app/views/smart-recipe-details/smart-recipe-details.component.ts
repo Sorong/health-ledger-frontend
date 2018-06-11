@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Treatment} from '../../models/treatment.model';
-import {RestServiceService} from '../../services/restService/rest-service.service';
 import 'rxjs/add/operator/map';
+import {TreatmentService} from '../../services/treatment.service';
 
 @Component({
   selector: 'app-smart-recipe-details',
@@ -10,11 +10,11 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./smart-recipe-details.component.css']
 })
 export class SmartRecipeDetailsComponent implements OnInit {
-  rest = new RestServiceService();
+  treatmentService = new TreatmentService();
   treatment: Treatment;
   constructor(private route: ActivatedRoute) {
     this.route.params.map(p => p.id).subscribe(id => {
-      this.rest.getTreatments(null).subscribe(obs => this.refreshData(obs, id));
+      this.treatmentService.get().subscribe(obs => this.refreshData(obs, id));
     });
   }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
-import {RestServiceService} from '../../services/restService/rest-service.service';
+import {TreatmentService} from '../../services/treatment.service';
 
 @Component({
   selector: 'app-smart-recipe-overview',
@@ -10,7 +10,7 @@ import {RestServiceService} from '../../services/restService/rest-service.servic
 })
 export class SmartRecipeOverviewComponent implements OnInit {
 
-  service = new RestServiceService();
+  treatmentService = new TreatmentService();
   displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed', 'details'];
   ds = new MatTableDataSource([]);
 
@@ -24,7 +24,7 @@ export class SmartRecipeOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getTreatments(null).subscribe(obs =>
+    this.treatmentService.get().subscribe(obs =>
       this.ds = new MatTableDataSource(obs)
     );
   }

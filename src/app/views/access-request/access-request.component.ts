@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-import {RestServiceService} from '../../services/restService/rest-service.service';
+import {RequestService} from '../../services/request.service';
+import {RequestForm} from '../../models/requestForm.model';
 
 @Component({
   selector: 'app-access-request',
@@ -10,7 +11,7 @@ import {RestServiceService} from '../../services/restService/rest-service.servic
 export class AccessRequestComponent implements OnInit {
   displayedColumns = ['datum', 'antragsteller', 'status', 'details'];
   ds = new MatTableDataSource([]);
-  rest = new RestServiceService();
+  requestService = new RequestService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -21,15 +22,15 @@ export class AccessRequestComponent implements OnInit {
   constructor() {
   }
 
-  refreshTable(obs: Observable){
+  refreshTable(obs: RequestForm[]) {
     console.log(obs);
-    obs = obs.filter(entry => entry["attestation"] !== null);
+    obs = obs.filter(entry => entry['attestation'] !== null);
     this.ds = new MatTableDataSource(obs);
   }
 
   ngOnInit() {
-    this.rest.getRequests('KEY').subscribe(obs =>
-      this.refreshTable(obs);
+    this.requestService.get().subscribe(obs =>
+      this.refreshTable(obs)
     );
   }
 

@@ -11,15 +11,15 @@ export class RequestService {
   constructor() {
   }
 
-  get (): Observable<RequestForm[]> {
+  get(): Observable<RequestForm[]> {
     return of(REQUESTS);
   }
 
-  post(pubKey: string, form: RequestForm): Observable {
-    return Observable.empty();
+  post(pubKey: string, form: RequestForm): Observable<never> {
+    return new Observable<never>(subscriber => subscriber.complete());
   }
 
-  put(pubKey: string, form: RequestForm): Observable {
-    return Observable.empty();
+  put(pubKey: string, form: RequestForm): Observable<never> {
+    return new Observable<never>(subscriber => subscriber.complete());
   }
 }

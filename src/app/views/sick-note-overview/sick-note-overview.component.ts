@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-import {Category, Treatment} from '../../models/treatment.model';
-import {RestServiceService} from '../../services/restService/rest-service.service';
+import {Treatment} from '../../models/treatment.model';
+import {TreatmentService} from '../../services/treatment.service';
 
 @Component({
   selector: 'app-sick-note-overview',
@@ -11,23 +11,24 @@ import {RestServiceService} from '../../services/restService/rest-service.servic
 export class SickNoteOverviewComponent implements OnInit {
   displayedColumns = ['einstelldatum', 'von', 'bis'];
   ds = new MatTableDataSource([]);
-  rest = new RestServiceService();
+  treatmentService = new TreatmentService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.ds.filter = filterValue;
   }
-  constructor() {   }
 
-  refreshTable(obs: Observable){
-    obs = obs.filter(entry => entry["attestation"] !== null);
+  constructor() {
+  }
+
+  refreshTable(obs: Treatment[]) {
+    obs = obs.filter(entry => entry['attestation'] !== null);
     this.ds = new MatTableDataSource(obs);
   }
 
   ngOnInit() {
-    this.rest.getTreatments('KEY').subscribe(obs =>
-      this.refreshTable(obs);
-    );
+    this.treatmentService.get().subscribe(obs =>
+      this.refreshTable(obs));
   }
 }
