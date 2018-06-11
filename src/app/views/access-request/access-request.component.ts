@@ -22,8 +22,6 @@ export class AccessRequestComponent implements OnInit {
   }
 
   refreshTable(obs: Observable){
-    console.log(obs);
-    obs = obs.filter(entry => entry["attestation"] !== null);
     this.ds = new MatTableDataSource(obs);
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RestServiceService} from '../../services/restService/rest-service.service';
 
 @Component({
   selector: 'app-employee-overview',
@@ -9,7 +10,14 @@ export class EmployeeOverviewComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  // refreshTable(obs: Observable){
+  //   this.ds = new MatTableDataSource(obs);
+  // }
+  //
+  // ngOnInit() {
+  //   this.rest.getRequests('KEY').subscribe(obs =>
+  //     this.refreshTable(obs);
+  //   );
+  // }
 
 }
