@@ -24,10 +24,10 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   }
 
   refreshData(obs: RequestForm[], id: any) {
-    console.log(obs);
     for (const item of obs) {
       if (item.id === id.toString()) {
         this.requestForm = item;
+        console.log(item);
         break;
       }
     }
