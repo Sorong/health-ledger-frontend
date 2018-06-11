@@ -26,6 +26,7 @@ import {EmployeeOverviewComponent} from './views/employee-overview/employee-over
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpHeaderProxy } from './interceptors/http-header-proxy';
 
 
 const appRoutes: Routes = [
@@ -90,7 +91,7 @@ const appRoutes: Routes = [
   providers: [
     {
         provide: HTTP_INTERCEPTORS,
-        useClass: HttpInterceptor,
+        useClass: HttpHeaderProxy,
         multi: true
     }
   ],
