@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {Category, Treatment} from '../../models/treatment.model';
+import {RestServiceService} from '../../services/restService/rest-service.service';
 
 @Component({
   selector: 'app-sick-note-overview',
@@ -8,27 +10,24 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class SickNoteOverviewComponent implements OnInit {
   displayedColumns = ['einstelldatum', 'von', 'bis'];
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  ds = new MatTableDataSource([]);
+  rest = new RestServiceService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.ds.filter = filterValue;
   }
-  constructor() { }
+  constructor() {   }
 
-  ngOnInit() {
+  refreshTable(obs: Observable){
+    obs = obs.filter(entry => entry["attestation"] !== null);
+    this.ds = new MatTableDataSource(obs);
   }
 
+  ngOnInit() {
+    this.rest.getTreatments('KEY').subscribe(obs =>
+      this.refreshTable(obs);
+    );
+  }
 }
-
-export interface Anfrage {
-  einstelldatum: string;
-  von: string;
-  bis: string;
-}
-
-const ELEMENT_DATA: Anfrage[] = [
-  {einstelldatum: '12.05.2018', von: '12.05.2018', bis: '16.05.2018'},
-  {einstelldatum: '06.05.2018', von: '07.05.2018', bis: '10.05.2018'},
-];

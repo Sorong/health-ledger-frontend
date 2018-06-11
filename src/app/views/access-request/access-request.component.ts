@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {RestServiceService} from '../../services/restService/rest-service.service';
 
 @Component({
   selector: 'app-access-request',
@@ -8,8 +9,8 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class AccessRequestComponent implements OnInit {
   displayedColumns = ['datum', 'antragsteller', 'status', 'details'];
-  //TODO: RequestForm nutzen
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  ds = new MatTableDataSource([]);
+  rest = new RestServiceService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -20,20 +21,16 @@ export class AccessRequestComponent implements OnInit {
   constructor() {
   }
 
+  refreshTable(obs: Observable){
+    console.log(obs);
+    obs = obs.filter(entry => entry["attestation"] !== null);
+    this.ds = new MatTableDataSource(obs);
+  }
+
   ngOnInit() {
+    this.rest.getRequests('KEY').subscribe(obs =>
+      this.refreshTable(obs);
+    );
   }
 
 }
-//TODO: RequestForm per getRequests als Observable
-
-export interface Anfrage {
-  datum: string;
-  antragsteller: string;
-  status: string;
-  details: number;
-}
-
-const ELEMENT_DATA: Anfrage[] = [
-  {datum: '12.05.2018', antragsteller: 'Dr. A', status: 'Offen', details: 1},
-  {datum: '10.05.2018', antragsteller: 'Stiftsapotheke', status: 'Akzeptiert', details: 2},
-];
