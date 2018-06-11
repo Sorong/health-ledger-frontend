@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-import {Prescription} from '../../models/prescription.model';
 import {Router} from '@angular/router';
-import {Category, Treatment} from '../../models/treatment.model';
+import {TreatmentService} from '../../services/treatment.service';
 
 @Component({
   selector: 'app-smart-recipe-overview',
@@ -11,8 +10,9 @@ import {Category, Treatment} from '../../models/treatment.model';
 })
 export class SmartRecipeOverviewComponent implements OnInit {
 
-  displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed'];
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  treatmentService = new TreatmentService();
+  displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed', 'details'];
+  ds = new MatTableDataSource([]);
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -24,42 +24,13 @@ export class SmartRecipeOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.treatmentService.get().subscribe(obs =>
+      this.ds = new MatTableDataSource(obs)
+    );
   }
 
 
   selectElement(id: string) {
-    this.router.navigate(['./smart-recipe-details']);
+    this.router.navigate(['./smart-recipe-details', id]);
   }
 }
-
-
-const ELEMENT_DATA: Treatment[] = [
-  {
-    id: '1', category: Category.bar, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  }, {
-    id: '2', category: Category.bar, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  }
-];
-

@@ -8,6 +8,7 @@ import {Category, Treatment} from '../../models/treatment.model';
   styleUrls: ['./health-record.component.css']
 })
 export class HealthRecordComponent implements OnInit {
+  //rest = new RestServiceService();
 
   displayedColumns = ['date', 'category', 'note', 'doctor_name', 'details'];
   ds = new MatTableDataSource(ELEMENT_DATA);

@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {RequestService} from '../../services/request.service';
+import {Router} from '@angular/router';
+import {RequestForm} from '../../models/requestForm.model';
 
 @Component({
   selector: 'app-access-request',
@@ -8,8 +11,8 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class AccessRequestComponent implements OnInit {
   displayedColumns = ['datum', 'antragsteller', 'status', 'details'];
-  //TODO: RequestForm nutzen
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  ds = new MatTableDataSource([]);
+  requestService = new RequestService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -17,23 +20,20 @@ export class AccessRequestComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor() {
+  constructor(private router: Router) {
+  }
+
+  refreshTable(obs: RequestForm[]) {
+    this.ds = new MatTableDataSource(obs);
   }
 
   ngOnInit() {
+    this.requestService.get().subscribe(obs =>
+      this.refreshTable(obs)
+    );
   }
 
+  selectElement(id: string) {
+    this.router.navigate(['./access-request-details-user', id]);
+  }
 }
-//TODO: RequestForm per getRequests als Observable
-
-export interface Anfrage {
-  datum: string;
-  antragsteller: string;
-  status: string;
-  details: number;
-}
-
-const ELEMENT_DATA: Anfrage[] = [
-  {datum: '12.05.2018', antragsteller: 'Dr. A', status: 'Offen', details: 1},
-  {datum: '10.05.2018', antragsteller: 'Stiftsapotheke', status: 'Akzeptiert', details: 2},
-];

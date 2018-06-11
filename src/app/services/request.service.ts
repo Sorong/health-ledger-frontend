@@ -11,7 +11,7 @@ export class RequestService {
   constructor() {
   }
 
-  get (): Observable<RequestForm[]> {
+  get(): Observable<RequestForm[]> {
     return of(REQUESTS);
   }
 
