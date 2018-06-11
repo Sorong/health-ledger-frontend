@@ -23,7 +23,7 @@ export class SickNoteOverviewComponent implements OnInit {
   }
 
   refreshTable(obs: Treatment[]) {
-    console.log(typeof obs);
+    console.log(obs);
     obs = obs.filter(entry => entry['attestation'] !== null);
     this.ds = new MatTableDataSource(obs);
   }

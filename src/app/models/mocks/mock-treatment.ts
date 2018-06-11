@@ -4,7 +4,7 @@ import {ATTESTATIONS} from '../mocks/mock-attestation';
 
 export const TREATMENT: Treatment[] = [
   {
-    id: '1337',
+    id: '1',
     category: Category.bar,
     issue_date: new Date(0),
     patient_name: 'Mr. Nice', doctor_name: 'Dr IQ',
@@ -13,7 +13,7 @@ export const TREATMENT: Treatment[] = [
     attestation: null,
   },
   {
-    id: '1337',
+    id: '2',
     category: Category.baz,
     issue_date: new Date(0),
     patient_name: 'foo', doctor_name: 'Dr IQ',
@@ -22,7 +22,7 @@ export const TREATMENT: Treatment[] = [
     attestation: ATTESTATIONS[0],
   },
   {
-    id: '1337',
+    id: '3',
     category: Category.foo,
     issue_date: new Date(0),
     patient_name: 'bar', doctor_name: 'Dr IQ',
@@ -31,7 +31,7 @@ export const TREATMENT: Treatment[] = [
     attestation: ATTESTATIONS[1],
   },
   {
-    id: '1337',
+    id: '4',
     category: Category.foo,
     issue_date: new Date(0),
     patient_name: 'baz', doctor_name: 'Dr IQ',
@@ -40,7 +40,7 @@ export const TREATMENT: Treatment[] = [
     attestation: ATTESTATIONS[2],
   },
   {
-    id: '1337',
+    id: '5',
     category: Category.foo,
     issue_date: new Date(0),
     patient_name: 'foobar', doctor_name: 'Dr IQ',
@@ -49,7 +49,7 @@ export const TREATMENT: Treatment[] = [
     attestation: null,
   },
   {
-    id: '1337',
+    id: '6',
     category: Category.foo,
     issue_date: new Date(0),
     patient_name: 'foobarbaz', doctor_name: 'Dr IQ',
