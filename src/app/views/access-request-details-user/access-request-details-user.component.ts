@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
-import {RestServiceService} from '../../services/restService/rest-service.service';
 import 'rxjs/add/operator/map';
 import {RequestForm} from '../../models/requestForm.model';
+import {RequestService} from '../../services/request.service';
 
 @Component({
   selector: 'app-access-request-details-user',
@@ -16,10 +16,10 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   displayedColumns = ['therapy', 'diagnose', 'recipe', 'incapacity'];
   ds = new MatTableDataSource(ELEMENT_DATA);
   requestForm: RequestForm;
-  rest = new RestServiceService();
+  requestService = new RequestService();
   constructor(private route: ActivatedRoute) {
     this.route.params.map(p => p.id).subscribe(id => {
-      this.rest.getRequests(null).subscribe(obs => this.refreshData(obs, id));
+      this.requestService.get().subscribe(obs => this.refreshData(obs, id));
     });
   }
 
