@@ -7,7 +7,7 @@ import {Treatment} from '../../models/treatment.model';
   templateUrl: './therapy.component.html',
   styleUrls: ['./therapy.component.css']
 })
-export class TherapyComponent implements OnInit {y
+export class TherapyComponent implements OnInit {
 
   @Input()
   editable: Boolean;
@@ -17,9 +17,8 @@ export class TherapyComponent implements OnInit {y
   detailsCategory = new FormControl('', [Validators.required]);
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
-  category = null; //'Mag Rosenkohl';
-  diagnose = 'Massive psychische Störung, wer mag schon Rosenkohl?';
-  recipe = '1kg Pizza pro Tag';
+
+
   details = [
     {name: 'Allergie'},
     {name: 'Akute Erkrankungen'},

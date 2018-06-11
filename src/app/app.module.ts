@@ -29,7 +29,7 @@ import {TherapyComponent} from './views/therapy/therapy.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'therapy-details', component: TherapyDetailsComponent},
+  {path: 'therapy-details/:id', component: TherapyDetailsComponent},
   {path: 'health-record', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
@@ -73,7 +73,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true} // <-- debugging purposes only
+      {enableTracing: false} // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
