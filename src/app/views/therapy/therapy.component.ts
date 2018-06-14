@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
 import {Treatment} from '../../models/treatment.model';
 
 @Component({
@@ -14,9 +13,6 @@ export class TherapyComponent implements OnInit {
 
   @Input()
   treatment: Treatment;
-  detailsCategory = new FormControl('', [Validators.required]);
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
 
 
   details = [
