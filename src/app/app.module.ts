@@ -25,6 +25,9 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
+import { AttestationComponent } from './views/attestation/attestation.component';
+import { PrescriptionComponent } from './views/prescription/prescription.component';
+import { TreatmentComponent } from './views/treatment/treatment.component';
 
 
 const appRoutes: Routes = [
@@ -33,7 +36,7 @@ const appRoutes: Routes = [
   {path: 'health-record', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
-  {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
+  {path: 'smart-attestation-details/:id', component: SmartRecipeDetailsComponent},
   {path: 'patient-overview', component: PatientOverviewComponent},
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
@@ -68,7 +71,10 @@ const appRoutes: Routes = [
     QrCodeScannerComponent,
     OverviewComponent,
     EmployeeOverviewComponent,
-    TherapyComponent
+    TherapyComponent,
+    AttestationComponent,
+    PrescriptionComponent,
+    TreatmentComponent
   ],
   imports: [
     RouterModule.forRoot(

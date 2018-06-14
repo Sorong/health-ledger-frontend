@@ -1,0 +1,26 @@
+<mat-accordion *ngIf="treatment?.prescription !== null">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Rezept
+      </mat-panel-title>
+      <mat-panel-description>
+        Rezept {{editable? "ausstellen" : "einsehen"}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <mat-form-field *ngIf="editable">
+      <textarea matInput placeholder="Rezept"></textarea>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="(!editable && treatment?.prescription != null)">
+      <textarea matInput placeholder="Rezept" value={{treatment?.prescription?.drug}} [readonly]="!editable"></textarea>
+    </mat-form-field>
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+
