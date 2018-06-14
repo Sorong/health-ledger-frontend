@@ -33,7 +33,7 @@ import { TreatmentComponent } from './views/treatment/treatment.component';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'therapy-details/:id', component: TherapyDetailsComponent},
-  {path: 'health-record', component: HealthRecordComponent},
+  {path: 'health-record/:id', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
   {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
