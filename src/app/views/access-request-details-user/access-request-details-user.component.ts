@@ -13,8 +13,8 @@ import {TreatmentService} from '../../services/treatment.service';
   styleUrls: ['./access-request-details-user.component.css']
 })
 export class AccessRequestDetailsUserComponent implements OnInit {
-  from = ""
-  to = ""
+  from = '';
+  to = '';
   displayedColumns = ['therapy', 'diagnose', 'recipe', 'incapacity'];
   ds = new MatTableDataSource([]);
   requestForm: RequestForm;
@@ -37,10 +37,10 @@ export class AccessRequestDetailsUserComponent implements OnInit {
       }
     }
 
-    let items = new Array<ListItem>();
-    for(let t of this.treatments)
+    const items = new Array<ListItem>();
+    for (const t of this.treatments) {
       items.push(new ListItem(this.requestForm, t));
-
+    }
     this.ds = new MatTableDataSource(items);
   }
 
@@ -61,12 +61,12 @@ class CheckboxAttributes {
 }
 
 class ListItem {
-  item:Treatment;
+  item: Treatment;
   treatment: CheckboxAttributes;
   recipe: CheckboxAttributes;
   attestation: CheckboxAttributes;
 
-  constructor(request:RequestForm, treatment:Treatment) {
+  constructor(request: RequestForm, treatment: Treatment) {
     this.item = treatment;
     this.treatment = new CheckboxAttributes(request.treatment);
     this.recipe = new CheckboxAttributes(request.recipe);
