@@ -38,5 +38,9 @@ export class OverviewComponent implements OnInit {
   selectElement(id: string) {
     this.router.navigate(['./health-record', id]);
   }
+
+  changeView() {
+    this.router.navigate(['./qr-code-scanner']);
+  }
 }
 
