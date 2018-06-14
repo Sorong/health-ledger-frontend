@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   {path: 'health-record/:id', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
-  {path: 'smart-attestation-details/:id', component: SmartRecipeDetailsComponent},
+  {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
   {path: 'patient-overview', component: PatientOverviewComponent},
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
