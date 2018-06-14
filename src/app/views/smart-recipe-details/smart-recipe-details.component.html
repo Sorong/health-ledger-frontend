@@ -6,10 +6,10 @@
     <input matInput placeholder="Datum" value="{{treatment?.prescription?.until_date}}" readonly>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Dosierung" value="Not Implemented" readonly>
+    <input matInput placeholder="Dosierung" value="{{treatment?.prescription?.dosage}}" readonly>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Arzt" value="{{treatment?.prescription?.doctor_name}}" readonly>
+    <input matInput placeholder="Arzt" value="{{treatment?.doctor_name}}" readonly>
   </mat-form-field>
   <button mat-raised-button>Einlösen</button>
   <button mat-raised-button>Abbrechen</button>
