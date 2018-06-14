@@ -1,5 +1,4 @@
-
-<mat-accordion *ngIf="treatment?.attestation !== null">
+<mat-accordion *ngIf="treatment?.diagnose !== null">
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -12,24 +11,24 @@
     </mat-expansion-panel-header>
 
 
+    <mat-form-field class="example-full-width" *ngIf="!editable">
+      <input matInput placeholder="Kategorie" value={{treatment?.diagnose?.category}} readonly>
+    </mat-form-field>
 
-<mat-form-field *ngIf="editable || (!editable && treatment?.diagnose != null)">
-  <textarea matInput placeholder="Diagnose" value={{treatment?.diagnose}} [readonly]="!editable"></textarea>
-</mat-form-field>
+    <mat-form-field *ngIf="editable">
+      <mat-select placeholder="Kategorie" [formControl]="detailsCategory" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of details" [value]="details">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="detailsCategory.hasError('required')">Bitte wählen Sie eine Kategorie</mat-error>
+      <mat-hint>{{detailsCategory.value?.name}}</mat-hint>
+    </mat-form-field>
 
-<mat-form-field class="example-full-width" *ngIf="!editable && treatment?.category != null">
-  <input matInput placeholder="Kategorie" value={{treatment?.category}} readonly>
-</mat-form-field>
-<mat-form-field *ngIf="editable">
-  <mat-select placeholder="Kategorie" [formControl]="detailsCategory" required>
-    <mat-option>--</mat-option>
-    <mat-option *ngFor="let item of details" [value]="details">
-      {{item.name}}
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="detailsCategory.hasError('required')">Bitte wählen Sie eine Kategorie</mat-error>
-  <mat-hint>{{detailsCategory.value?.name}}</mat-hint>
-</mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Diagnose" value={{treatment?.diagnose.diagnose}} [readonly]="!editable"></textarea>
+    </mat-form-field>
 
   </mat-expansion-panel>
 </mat-accordion>
