@@ -28,6 +28,8 @@ import {TherapyComponent} from './views/therapy/therapy.component';
 import { AttestationComponent } from './views/attestation/attestation.component';
 import { PrescriptionComponent } from './views/prescription/prescription.component';
 import { TreatmentComponent } from './views/treatment/treatment.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpHeaderProxy } from './interceptors/http-header-proxy';
 
 
 const appRoutes: Routes = [
@@ -88,9 +90,17 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     QRCodeModule,
     ZXingScannerModule.forRoot(),
+    //End-TherapyDetails
+    HttpClientModule
   ],
   exports: [],
-  providers: [],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpHeaderProxy,
+        multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
