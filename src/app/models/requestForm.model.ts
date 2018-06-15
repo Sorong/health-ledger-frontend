@@ -2,6 +2,7 @@ import { Result } from '../models/result.model'
 
 export class RequestForm{
     id: string;
+    date: Date; 
     requester: string;
     requesterPublicKey: string;
     note: string;

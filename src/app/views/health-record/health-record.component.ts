@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-import {Category, Treatment} from '../../models/treatment.model';
+import {TreatmentService} from '../../services/treatment.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-health-record',
@@ -8,52 +9,27 @@ import {Category, Treatment} from '../../models/treatment.model';
   styleUrls: ['./health-record.component.css']
 })
 export class HealthRecordComponent implements OnInit {
-  //rest = new RestServiceService();
+  treatmentService = new TreatmentService();
 
   displayedColumns = ['date', 'category', 'note', 'doctor_name', 'details'];
-  ds = new MatTableDataSource(ELEMENT_DATA);
+  ds = new MatTableDataSource([]);
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.ds.filter = filterValue;
   }
-  constructor() { }
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
+    this.treatmentService.get().subscribe(obs =>
+      this.ds = new MatTableDataSource(obs)
+    );
   }
 
+  selectElement(id: string) {
+    this.router.navigate(['./therapy-details', id]);
+  }
 }
-
-
-
-const ELEMENT_DATA: Treatment[] = [
-  {
-    id: '1', category: Category.bar, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  }, {
-    id: '2', category: Category.bar, diagnose: 'Aids', prescription: {
-      drug: 'Axelavir',
-      patient_name: 'Klim',
-      doctor_name: 'Zero Sr.',
-      until_date: new Date(),
-      note: 'Water is wet',
-      redeemed: false
-    }, attestation: {
-      is_incapable: true,
-      incapable_until: new Date(),
-      incapable_since: new Date(0)
-    }
-  }
-];
-

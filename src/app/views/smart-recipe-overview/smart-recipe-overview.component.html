@@ -6,7 +6,7 @@
 
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef> Datum </th>
-    <td mat-cell *matCellDef="let element" data-label="Datum"> Not Implemented </td>
+    <td mat-cell *matCellDef="let element" data-label="Datum"> {{element?.issue_date}}</td>
   </ng-container>
 
   <ng-container matColumnDef="drug">
@@ -16,12 +16,12 @@
 
   <ng-container matColumnDef="dose">
     <th mat-header-cell *matHeaderCellDef> Dosierung </th>
-    <td mat-cell *matCellDef="let element" data-label="Dosierung"> Not Implemented</td>
+    <td mat-cell *matCellDef="let element" data-label="Dosierung"> {{element?.prescription?.dosage}}</td>
   </ng-container>
 
   <ng-container matColumnDef="doctor">
     <th mat-header-cell *matHeaderCellDef> Arzt </th>
-    <td mat-cell *matCellDef="let element" data-label="Arzt"> {{element?.prescription?.doctor_name}} </td>
+    <td mat-cell *matCellDef="let element" data-label="Arzt"> {{element?.doctor_name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="redeemed">

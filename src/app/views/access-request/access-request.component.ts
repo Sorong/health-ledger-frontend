@@ -24,6 +24,7 @@ export class AccessRequestComponent implements OnInit {
   }
 
   refreshTable(obs: RequestForm[]) {
+    console.log(obs);
     this.ds = new MatTableDataSource(obs);
   }
 

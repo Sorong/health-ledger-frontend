@@ -25,14 +25,17 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
+import { AttestationComponent } from './views/attestation/attestation.component';
+import { PrescriptionComponent } from './views/prescription/prescription.component';
+import { TreatmentComponent } from './views/treatment/treatment.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpHeaderProxy } from './interceptors/http-header-proxy';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'therapy-details', component: TherapyDetailsComponent},
-  {path: 'health-record', component: HealthRecordComponent},
+  {path: 'therapy-details/:id', component: TherapyDetailsComponent},
+  {path: 'health-record/:id', component: HealthRecordComponent},
   {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
   {path: 'diagnostics', component: DiagnosticsComponent},
   {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
@@ -40,7 +43,7 @@ const appRoutes: Routes = [
   {path: 'access-requests', component: AccessRequestComponent},
   {path: 'sick-note-overview', component: SickNoteOverviewComponent},
   {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
-  {path: 'access-request-details', component: AccessRequestDetailsComponent},
+  {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
   {path: 'qr-code', component: QrCodeComponent},
   {path: 'qr-code-scanner', component: QrCodeScannerComponent},
   {path: 'employee-overview', component: EmployeeOverviewComponent},
@@ -70,12 +73,15 @@ const appRoutes: Routes = [
     QrCodeScannerComponent,
     OverviewComponent,
     EmployeeOverviewComponent,
-    TherapyComponent
+    TherapyComponent,
+    AttestationComponent,
+    PrescriptionComponent,
+    TreatmentComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true} // <-- debugging purposes only
+      {enableTracing: false} // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,

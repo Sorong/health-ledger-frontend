@@ -1,11 +1,11 @@
 <div>
   <div fxLayout="row">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Anfrage von:" value={{from}} readonly>
+      <input matInput placeholder="Anfrage von:" value='Dir' readonly>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Anfrage an:" value={{to}} readonly>
+      <input matInput placeholder="Anfrage an:" [value]="name" readonly>
     </mat-form-field>
   </div>
   <div>
