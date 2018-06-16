@@ -25,6 +25,9 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
+import { AttestationComponent } from './views/attestation/attestation.component';
+import { PrescriptionComponent } from './views/prescription/prescription.component';
+import { TreatmentComponent } from './views/treatment/treatment.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpHeaderProxy } from './interceptors/http-header-proxy';
 import { AuthGuard } from './guards/auth.guard';
@@ -73,7 +76,10 @@ const appRoutes: Routes = [
     QrCodeScannerComponent,
     OverviewComponent,
     EmployeeOverviewComponent,
-    TherapyComponent
+    TherapyComponent,
+    AttestationComponent,
+    PrescriptionComponent,
+    TreatmentComponent
   ],
   imports: [
     RouterModule.forRoot(

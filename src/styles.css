@@ -64,3 +64,8 @@ th, td {
 .mat-raised-button{
   margin-right: 5px !important;
 }
+
+mat-accordion {
+  width: 100%;
+  padding: 5px;
+}
