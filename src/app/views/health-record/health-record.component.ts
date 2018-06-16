@@ -9,7 +9,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./health-record.component.css']
 })
 export class HealthRecordComponent implements OnInit {
-  treatmentService = new TreatmentService();
 
   displayedColumns = ['date', 'category', 'note', 'doctor_name', 'details'];
   ds = new MatTableDataSource([]);
@@ -20,7 +19,7 @@ export class HealthRecordComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private treatmentService:TreatmentService) {
   }
 
   ngOnInit() {

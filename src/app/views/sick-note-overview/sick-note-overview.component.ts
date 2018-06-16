@@ -11,7 +11,6 @@ import {TreatmentService} from '../../services/treatment.service';
 export class SickNoteOverviewComponent implements OnInit {
   displayedColumns = ['einstelldatum', 'von', 'bis'];
   ds = new MatTableDataSource([]);
-  treatmentService = new TreatmentService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -19,7 +18,7 @@ export class SickNoteOverviewComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor() {
+  constructor(private treatmentService:TreatmentService) {
   }
 
   refreshTable(obs: Treatment[]) {

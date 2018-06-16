@@ -10,7 +10,6 @@ import {TreatmentService} from '../../services/treatment.service';
 })
 export class SmartRecipeOverviewComponent implements OnInit {
 
-  treatmentService = new TreatmentService();
   displayedColumns = ['date', 'drug', 'dose', 'doctor', 'redeemed', 'details'];
   ds = new MatTableDataSource([]);
 
@@ -20,7 +19,7 @@ export class SmartRecipeOverviewComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private treatmentService:TreatmentService) {
   }
 
   ngOnInit() {
