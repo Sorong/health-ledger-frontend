@@ -30,28 +30,31 @@ import { PrescriptionComponent } from './views/prescription/prescription.compone
 import { TreatmentComponent } from './views/treatment/treatment.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpHeaderProxy } from './interceptors/http-header-proxy';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'therapy-details/:id', component: TherapyDetailsComponent},
-  {path: 'health-record/:id', component: HealthRecordComponent},
-  {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
-  {path: 'diagnostics', component: DiagnosticsComponent},
-  {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
-  {path: 'patient-overview', component: PatientOverviewComponent},
-  {path: 'access-requests', component: AccessRequestComponent},
-  {path: 'sick-note-overview', component: SickNoteOverviewComponent},
-  {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
-  {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
-  {path: 'qr-code', component: QrCodeComponent},
-  {path: 'qr-code-scanner', component: QrCodeScannerComponent},
-  {path: 'employee-overview', component: EmployeeOverviewComponent},
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  }
+    {path: 'login', component: LoginComponent},
+    {path: '', canActivate:[AuthGuard], children: [
+        {path: 'therapy-details', component: TherapyDetailsComponent},
+        {path: 'health-record', component: HealthRecordComponent},
+        {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
+        {path: 'diagnostics', component: DiagnosticsComponent},
+        {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
+        {path: 'patient-overview', component: PatientOverviewComponent},
+        {path: 'access-requests', component: AccessRequestComponent},
+        {path: 'sick-note-overview', component: SickNoteOverviewComponent},
+        {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
+        {path: 'access-request-details', component: AccessRequestDetailsComponent},
+        {path: 'qr-code', component: QrCodeComponent},
+        {path: 'qr-code-scanner', component: QrCodeScannerComponent},
+        {path: 'employee-overview', component: EmployeeOverviewComponent},
+    ]},
+    {
+      path: '',
+      redirectTo: '/login',
+      pathMatch: 'full'
+    }
 ];
 
 
@@ -81,7 +84,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false} // <-- debugging purposes only
+      //{enableTracing: true} // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
