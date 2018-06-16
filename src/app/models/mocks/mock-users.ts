@@ -4,5 +4,5 @@ import { RequestForm } from '../../models/requestForm.model';
 import {REQUESTS} from './mock-requests';
 
 export const USERS: User[] = [
-  {publicKey: '1337', request: REQUESTS},
+  {name:'Hans', type: 'Patient', publicKey: '1337', request: REQUESTS},
 ];
