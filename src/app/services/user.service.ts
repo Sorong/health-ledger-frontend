@@ -1,20 +1,24 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {User} from '../models/user.model.interface';
-import {USERS} from '../models/mocks/mock-users';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import { environment } from '../../environments/environment';
+import {User} from '../models/user.model.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor() {
-  }
+  private col:string = "user";
 
-  get (): Observable<User> {
-    return of(USERS[0]);
+  constructor(private http:HttpClient) { }
+
+  get(): Observable<User> {
+    return this.http.get(`${environment.host}${this.col}`)
+                    .map(res=>{return res as User});
   }
 
   post(): Observable<User> {
-    return of(USERS[0]);
+    return this.http.post(`${environment.host}${this.col}`, {})
+                    .map(res=>{return res as User});
   }
 }

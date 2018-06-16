@@ -37,11 +37,11 @@ export class PermissionGuard implements CanActivateChild {
     canActivateChild(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
-            if(StateService.user){
-                if(PermissionGuard.permissions[StateService.user.type.toLowerCase()].includes(state.url.split('/')[1])){
+            if(this.stateService.user){
+                if(PermissionGuard.permissions[this.stateService.user.type.toLowerCase()].includes(state.url.split('/')[1])){
                     return true;
                 } else {
-                    console.log("Role \"" + StateService.user.type + "\" is not authorized to access this view! Redirecting...");
+                    console.log("Role \"" + this.stateService.user.type + "\" is not authorized to access this view! Redirecting...");
                     this.router.navigate(['/login']);
                     return false;
                 }
