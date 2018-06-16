@@ -10,7 +10,7 @@ import { UserService } from './user.service';
 })
 export class StateService {
 
-  static user: User;
+  public user: User;
 
   static default_pages = {patient: '/health-record',
                             arzt: '/login',
@@ -36,7 +36,7 @@ export class StateService {
       if (this.storage.getItem("L2PrivateKey")) {
           this.storage.removeItem("L2PrivateKey");
       }
-      StateService.user = undefined;
+      this.user = undefined;
       console.log('Fabric Certificate was invalidated and L2-Keys removed! Logging out...');
       this.router.navigate(['/login']);
   }
@@ -48,17 +48,19 @@ export class StateService {
   */
   login(cert: string) {
       if (!cert || 0 === cert.length) {console.log("No Certificate provided to stateService.login()!"); return;}
+
+      //alway creates new keys on login
+      let keys = this.cryptoService.generateKeyPair();
+
       this.storage.setItem("FabricCert", cert);
-      if (!this.storage.getItem("L2PrivateKey")) {
-          let keys = this.cryptoService.generateKeyPair();
-          this.storage.setItem("L2PrivateKey", keys[0]);
-          this.storage.setItem("L2PublicKey", keys[1]);
-      }
-      this.userService.get().subscribe(
+      this.storage.setItem("L2PrivateKey", keys[0]);
+      this.storage.setItem("L2PublicKey", keys[1]);
+
+      this.userService.post().subscribe(
           (user) => {
-              StateService.user = user;
-              console.log("Logged in! Welcome, " + StateService.user.name + "!");
-              this.router.navigate([StateService.default_pages[StateService.user.type.toLowerCase()]]);
+              this.user = user;
+              console.log("Logged in! Welcome, " + this.user.name + "!");
+              this.router.navigate([StateService.default_pages[this.user.type.toLowerCase()]]);
           }, (err) => console.log(err)
       );
   }
@@ -67,8 +69,14 @@ export class StateService {
   * To be called on load. Authorizes user from stored certificate.
   */
   autoLoginFromStorage(){
-      if(this.storage.getItem("FabricCert")){
-          this.login(this.storage.getItem("FabricCert"));
+      if(this.storage.getItem("FabricCert") && this.storage.getItem("L2PublicKey")){
+        this.userService.get().subscribe(
+            (user) => {
+                this.user = user;
+                console.log("Logged in! Welcome, " + this.user.name + "!");
+                this.router.navigate([StateService.default_pages[this.user.type.toLowerCase()]]);
+            }, (err) => console.log(err)
+        );
       }
   }
 
