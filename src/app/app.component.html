@@ -10,8 +10,8 @@
     <span class="hl-toolbar-filler"></span>
 
     <mat-icon *ngIf=name>account_circle</mat-icon>
-    <span *ngIf=name>
-      {{name}}
+    <span>
+      {{this.state.user?.name}}
     </span>
 
   </mat-toolbar>

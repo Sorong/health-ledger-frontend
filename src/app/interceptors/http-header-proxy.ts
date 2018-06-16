@@ -13,10 +13,15 @@ export class HttpHeaderProxy implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let authReq = undefined;
-        if(this.storageService.getItem("FabricCert")){
-            authReq = req.clone({ headers: req.headers.set("Crypto", "{fabricCert: \""
-            + this.storageService.getItem("FabricCert") +"\", pubKey: \""
-            + this.storageService.getItem("L2PublicKey") +"\"}")});
+        let cert = this.storageService.getItem("FabricCert");
+        if(cert){
+          let pubkey = this.storageService.getItem("L2PublicKey");
+          pubkey = pubkey.replace(/\n/g, "\\n");
+          let crypto = `{ "fabricCert":${cert}, "pubKey":"${pubkey}" }`;
+
+          crypto = btoa(crypto);
+
+          authReq = req.clone({ headers: req.headers.set("Crypto", crypto)});
         } else {
             authReq = req.clone({ headers: req.headers});
         }
