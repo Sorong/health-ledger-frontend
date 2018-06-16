@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private storageService: StorageService, private stateService: StateService) { }
 
   ngOnInit() {
+      this.stateService.autoLoginFromStorage();
   }
 
   onChange(event) {
