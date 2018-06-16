@@ -44,20 +44,20 @@ export class StateService {
 
   /*
   * Login by providing a valid Fabric User Certificate.
-  * Generates and stores an L2 encryption key pair if no key are found..
+  * Generates and stores an L2 encryption key pair if no keys are found.
   */
   login(cert: string) {
       if (!cert || 0 === cert.length) {console.log("No Certificate provided to stateService.login()!"); return;}
       this.storage.setItem("FabricCert", cert);
+      if (!this.storage.getItem("L2PrivateKey")) {
+          let keys = this.cryptoService.generateKeyPair();
+          this.storage.setItem("L2PrivateKey", keys[0]);
+          this.storage.setItem("L2PublicKey", keys[1]);
+      }
       this.userService.get().subscribe(
           (user) => {
               StateService.user = user;
               console.log("Logged in! Welcome, " + StateService.user.name + "!");
-              if (!this.storage.getItem("L2PrivateKey")) {
-                  let keys = this.cryptoService.generateKeyPair();
-                  this.storage.setItem("L2PrivateKey", keys[0]);
-                  this.storage.setItem("L2PublicKey", keys[1]);
-              }
               this.router.navigate([StateService.default_pages[StateService.user.type.toLowerCase()]]);
           }, (err) => console.log(err)
       );
