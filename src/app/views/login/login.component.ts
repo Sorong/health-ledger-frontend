@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   }
 
   onChange(event) {
-    this.storageService.setItem('name', 'Max Mustermann');
     var file = event.srcElement.files;
     var reader = new FileReader();
     reader.onload = (e) => {
