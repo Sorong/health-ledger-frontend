@@ -31,11 +31,12 @@ import { TreatmentComponent } from './views/treatment/treatment.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpHeaderProxy } from './interceptors/http-header-proxy';
 import { AuthGuard } from './guards/auth.guard';
+import { PermissionGuard } from './guards/permission.guard';
 
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
-    {path: '', canActivate:[AuthGuard], children: [
+    {path: '', canActivate:[AuthGuard], canActivateChild:[PermissionGuard], children: [
         {path: 'therapy-details', component: TherapyDetailsComponent},
         {path: 'health-record', component: HealthRecordComponent},
         {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},

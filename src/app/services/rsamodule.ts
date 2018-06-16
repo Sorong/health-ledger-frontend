@@ -24,7 +24,7 @@ export class RSAModule {
 
     /**
     * recursiveCrypt - Recursively encrypts or decrypts all attribute
-    * fields of an object and its nested members.
+    * fields of an object and its nested members. Ignores members starten with an underscore (eg. "_id").
     * Attribute types are stored in a helper object which replaces the original field value.
     * Simple types are restored upon decryption.
     *
@@ -34,23 +34,25 @@ export class RSAModule {
     */
     private recursiveCrypt(obj, jsencrypt_instance, decryptFlag=false):void {
         for (var property in obj) { // iterate over all properties of the object
-            if (obj.hasOwnProperty(property)) { // exclude inherited fields
-                if (typeof obj[property] == "object" && !(obj[property] instanceof encObj)) {
-                    // recursively call the function for all members which are non-primitive
-                    // and not the helper object replacing an original value
-                    this.recursiveCrypt(obj[property], jsencrypt_instance, decryptFlag);
-                } else {
-                    // in case of a primitive type or helper object
-                    if(decryptFlag == false){
-                        let dtype = typeof(obj[property]); // save the value type for later reconstruction
-                        let val = jsencrypt_instance.encrypt(String(obj[property])); // encrypt the value
-                        // replace the value with a helper object containing its type and encrypted string
-                        obj[property] = new encObj(val, dtype);
+            if(!property.toString().startsWith("_")){ //exclude fields starting with an underscore
+                if (obj.hasOwnProperty(property)) { // exclude inherited fields
+                    if (typeof obj[property] == "object" && !(obj[property] instanceof encObj)) {
+                        // recursively call the function for all members which are non-primitive
+                        // and not the helper object replacing an original value
+                        this.recursiveCrypt(obj[property], jsencrypt_instance, decryptFlag);
                     } else {
-                        // decrypt the value string
-                        obj[property].val = jsencrypt_instance.decrypt(obj[property].val);
-                        // restore its original type
-                        obj[property] = this.reconstructType(obj[property]);
+                        // in case of a primitive type or helper object
+                        if(decryptFlag == false){
+                            let dtype = typeof(obj[property]); // save the value type for later reconstruction
+                            let val = jsencrypt_instance.encrypt(String(obj[property])); // encrypt the value
+                            // replace the value with a helper object containing its type and encrypted string
+                            obj[property] = new encObj(val, dtype);
+                        } else {
+                            // decrypt the value string
+                            obj[property].val = jsencrypt_instance.decrypt(obj[property].val);
+                            // restore its original type
+                            obj[property] = this.reconstructType(obj[property]);
+                        }
                     }
                 }
             }

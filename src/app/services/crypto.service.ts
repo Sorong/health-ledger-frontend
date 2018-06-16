@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CryptoServiceService {
+export class CryptoService {
     rsaMod = new RSAModule();
     keyGenerator = new KeyGenerator();
 
@@ -23,6 +23,10 @@ export class CryptoServiceService {
         this.rsaMod.decryptData(obj, privkey);
     }
 
+    /*
+    * Generates a properly formatted RSA Keypair for the level 2 encryption.
+    * Returns a list containig both keys. First element is private key, second is public.
+    */
     public generateKeyPair():string[]{
         return this.keyGenerator.generateKeyPair();
     }
