@@ -15,7 +15,6 @@ import {SmartRecipeOverviewComponent} from './views/smart-recipe-overview/smart-
 import {DiagnosticsComponent} from './views/diagnostics/diagnostics.component';
 import {PatientOverviewComponent} from './views/patient-overview/patient-overview.component';
 import {AccessRequestComponent} from './views/access-request/access-request.component';
-import {SickNoteOverviewComponent} from './views/sick-note-overview/sick-note-overview.component';
 import {SmartRecipeDetailsComponent} from './views/smart-recipe-details/smart-recipe-details.component';
 import {AccessRequestDetailsUserComponent} from './views/access-request-details-user/access-request-details-user.component';
 import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
@@ -32,7 +31,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpHeaderProxy} from './interceptors/http-header-proxy';
 import {AuthGuard} from './guards/auth.guard';
 import {PermissionGuard} from './guards/permission.guard';
-import { HealthRecordUserComponent } from './views/health-record-user/health-record-user.component';
+import {HealthRecordUserComponent} from './views/health-record-user/health-record-user.component';
 import {RecordComponent} from './views/record/record.component';
 
 
@@ -47,9 +46,8 @@ const appRoutes: Routes = [
       {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
       {path: 'patient-overview', component: PatientOverviewComponent},
       {path: 'access-requests', component: AccessRequestComponent},
-      {path: 'sick-note-overview', component: SickNoteOverviewComponent},
       {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
-      {path: 'access-request-details', component: AccessRequestDetailsComponent},
+      {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
       {path: 'qr-code', component: QrCodeComponent},
       {path: 'qr-code-scanner', component: QrCodeScannerComponent},
       {path: 'employee-overview', component: EmployeeOverviewComponent},
@@ -74,7 +72,6 @@ const appRoutes: Routes = [
     DiagnosticsComponent,
     PatientOverviewComponent,
     AccessRequestComponent,
-    SickNoteOverviewComponent,
     SmartRecipeDetailsComponent,
     AccessRequestDetailsUserComponent,
     AccessRequestDetailsComponent,
@@ -88,11 +85,11 @@ const appRoutes: Routes = [
     TreatmentComponent,
     HealthRecordUserComponent,
     RecordComponent
-
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
+      //{enableTracing: true} // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
@@ -101,7 +98,7 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     QRCodeModule,
     ZXingScannerModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
   ],
   exports: [],
   providers: [

@@ -3,12 +3,16 @@ import {Result} from '../models/result.model';
 export class RequestForm {
   id: string;
   date: Date;
-  requester: string;
-  requesterPublicKey: string;
+
+  name: string;
+  publicKey: string;
+
   note: string;
-  duration: number;
+  since: Date;
+
   treatment: boolean;
   attestation: boolean;
   recipe: boolean;
-  Result: Result;
+
+  result: Result;
 }
