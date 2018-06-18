@@ -25,37 +25,42 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
-import { AttestationComponent } from './views/attestation/attestation.component';
-import { PrescriptionComponent } from './views/prescription/prescription.component';
-import { TreatmentComponent } from './views/treatment/treatment.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpHeaderProxy } from './interceptors/http-header-proxy';
-import { AuthGuard } from './guards/auth.guard';
-import { PermissionGuard } from './guards/permission.guard';
+import {AttestationComponent} from './views/attestation/attestation.component';
+import {PrescriptionComponent} from './views/prescription/prescription.component';
+import {TreatmentComponent} from './views/treatment/treatment.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpHeaderProxy} from './interceptors/http-header-proxy';
+import {AuthGuard} from './guards/auth.guard';
+import {PermissionGuard} from './guards/permission.guard';
+import {HealthRecordUserComponent} from './views/health-record-user/health-record-user.component';
+import {RecordComponent} from './views/record/record.component';
 
 
 const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent},
-    {path: '', canActivate:[AuthGuard], canActivateChild:[PermissionGuard], children: [
-        {path: 'therapy-details', component: TherapyDetailsComponent},
-        {path: 'health-record', component: HealthRecordComponent},
-        {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
-        {path: 'diagnostics', component: DiagnosticsComponent},
-        {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
-        {path: 'patient-overview', component: PatientOverviewComponent},
-        {path: 'access-requests', component: AccessRequestComponent},
-        {path: 'sick-note-overview', component: SickNoteOverviewComponent},
-        {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
-        {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
-        {path: 'qr-code', component: QrCodeComponent},
-        {path: 'qr-code-scanner', component: QrCodeScannerComponent},
-        {path: 'employee-overview', component: EmployeeOverviewComponent},
-    ]},
-    {
-      path: '',
-      redirectTo: '/login',
-      pathMatch: 'full'
-    }
+  {path: 'login', component: LoginComponent},
+  {
+    path: '', canActivate: [AuthGuard], canActivateChild: [PermissionGuard], children: [
+      {path: 'therapy-details', component: TherapyDetailsComponent},
+      {path: 'health-record/:id', component: HealthRecordComponent},
+      {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
+      {path: 'diagnostics/:pub_key', component: DiagnosticsComponent},
+      {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
+      {path: 'patient-overview', component: PatientOverviewComponent},
+      {path: 'access-requests', component: AccessRequestComponent},
+      {path: 'sick-note-overview', component: SickNoteOverviewComponent},
+      {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
+      {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
+      {path: 'qr-code', component: QrCodeComponent},
+      {path: 'qr-code-scanner', component: QrCodeScannerComponent},
+      {path: 'employee-overview', component: EmployeeOverviewComponent},
+      {path: 'health-record-user', component: HealthRecordUserComponent}
+    ]
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
 ];
 
 
@@ -80,7 +85,9 @@ const appRoutes: Routes = [
     TherapyComponent,
     AttestationComponent,
     PrescriptionComponent,
-    TreatmentComponent
+    TreatmentComponent,
+    HealthRecordUserComponent,
+    RecordComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -94,15 +101,14 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     QRCodeModule,
     ZXingScannerModule.forRoot(),
-    //End-TherapyDetails
     HttpClientModule
   ],
   exports: [],
   providers: [
     {
-        provide: HTTP_INTERCEPTORS,
-        useClass: HttpHeaderProxy,
-        multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpHeaderProxy,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
