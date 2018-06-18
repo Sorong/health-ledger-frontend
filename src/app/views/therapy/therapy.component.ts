@@ -14,15 +14,6 @@ export class TherapyComponent implements OnInit {
   @Input()
   treatment: Treatment;
 
-
-  details = [
-    {name: 'Allergie'},
-    {name: 'Akute Erkrankungen'},
-    {name: 'Chronische Erkrankungen'},
-    {name: 'Sonstiges'},
-    {name: 'Mag Rosenkohl'}
-  ];
-
   constructor() {
   }
 

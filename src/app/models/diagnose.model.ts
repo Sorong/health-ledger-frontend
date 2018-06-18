@@ -4,6 +4,7 @@ export class Diagnose {
 }
 
 export enum Category {
+  NONE = '',
   foo = 'Foo',
   bar = 'bar',
   baz = 'baz'
