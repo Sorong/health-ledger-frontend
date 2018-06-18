@@ -25,15 +25,14 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
-import {AttestationComponent} from './views/attestation/attestation.component';
-import {PrescriptionComponent} from './views/prescription/prescription.component';
-import {TreatmentComponent} from './views/treatment/treatment.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {HttpHeaderProxy} from './interceptors/http-header-proxy';
-import {AuthGuard} from './guards/auth.guard';
-import {PermissionGuard} from './guards/permission.guard';
-import { HealthRecordUserComponent } from './views/health-record-user/health-record-user.component';
-import {RecordComponent} from './views/record/record.component';
+import { AttestationComponent } from './views/attestation/attestation.component';
+import { PrescriptionComponent } from './views/prescription/prescription.component';
+import { TreatmentComponent } from './views/treatment/treatment.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpHeaderProxy } from './interceptors/http-header-proxy';
+import { AuthGuard } from './guards/auth.guard';
+import { PermissionGuard } from './guards/permission.guard';
+import {HealthRecordUserComponent} from './views/health-record-user/health-record-user.component';
 
 
 const appRoutes: Routes = [
@@ -46,11 +45,10 @@ const appRoutes: Routes = [
       {path: 'diagnostics/:pub_key', component: DiagnosticsComponent},
       {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
       {path: 'patient-overview', component: PatientOverviewComponent},
-      {path: 'patient-overview-user', component: PatientOverviewComponent},
       {path: 'access-requests', component: AccessRequestComponent},
       {path: 'sick-note-overview', component: SickNoteOverviewComponent},
       {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
-      {path: 'access-request-details', component: AccessRequestDetailsComponent},
+      {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
       {path: 'qr-code', component: QrCodeComponent},
       {path: 'qr-code-scanner', component: QrCodeScannerComponent},
       {path: 'employee-overview', component: EmployeeOverviewComponent},
@@ -86,14 +84,12 @@ const appRoutes: Routes = [
     TherapyComponent,
     AttestationComponent,
     PrescriptionComponent,
-    TreatmentComponent,
-    HealthRecordUserComponent,
-    RecordComponent
-
+    TreatmentComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
+      //{enableTracing: true} // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
@@ -102,14 +98,14 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     QRCodeModule,
     ZXingScannerModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
   ],
   exports: [],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpHeaderProxy,
-      multi: true
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpHeaderProxy,
+        multi: true
     }
   ],
   bootstrap: [AppComponent]

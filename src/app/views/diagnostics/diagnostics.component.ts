@@ -57,7 +57,7 @@ export class DiagnosticsComponent implements OnInit {
     this.requestService.get().subscribe(obs => {
         const filtered_obs = obs.filter(entry => entry['id'] === this.pub_key);
         if (filtered_obs.length !== 0) {
-          this.treatment.patient_name = filtered_obs[0].requester;
+          this.treatment.patient_name = filtered_obs[0].name;
         }
       }
     );

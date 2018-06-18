@@ -25,7 +25,7 @@ export class HealthRecordComponent implements OnInit {
     this.requestService.get().subscribe(obs => {
         const filtered_obs = obs.filter(entry => entry['id'] === this.pub_key);
         if (filtered_obs.length !== 0) {
-          this.dataSource = new MatTableDataSource(filtered_obs[0].Result.treatment);
+          this.dataSource = new MatTableDataSource(filtered_obs[0].result.treatment);
         } else {
           this.dataSource = new MatTableDataSource([]);
         }
