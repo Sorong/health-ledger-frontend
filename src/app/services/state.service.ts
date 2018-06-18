@@ -15,7 +15,7 @@ export class StateService {
   static default_pages = {patient: '/health-record-user',
                             arzt: '/patient-overview',
                             versicherung: '/patient-overview',
-                            apotheke: '/qr-code',
+                            apotheke: '/qr-code-scanner',
                             arbeitgeber: '/employee-overview'};
 
   constructor(private router: Router,
