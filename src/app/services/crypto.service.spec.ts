@@ -154,7 +154,6 @@ describe('CryptoService', () => {
         var car = {type:"Fiat",
         model:500.1,
         color:null,
-        _noEncryptionOnThisField:"test",
         passengers: [p1, p2]};
 
         let target_enc_string = JSON.stringify(car);

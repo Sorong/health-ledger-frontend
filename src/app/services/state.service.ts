@@ -12,7 +12,7 @@ export class StateService {
 
   public user: User;
 
-  static default_pages = {patient: '/health-record',
+  static default_pages = {patient: '/login',
                             arzt: '/login',
                             versicherung: '/login',
                             apotheke: '/login',
