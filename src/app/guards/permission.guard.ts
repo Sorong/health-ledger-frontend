@@ -18,7 +18,7 @@ export class PermissionGuard implements CanActivateChild {
             'access-requests', 'access-request-details', 'qr-code-scanner'],
         apotheke: ['smart-recipe-overview', 'access-requests', 'access-request-details',
             'smart-recipe-details', 'qr-code-scanner'],
-        arbeitgeber: ['access-requests', 'sick-note-overview', 'access-request-details',
+        arbeitgeber: ['access-requests', 'access-request-details',
             'qr-code-scanner', 'employee-overview']
         };
 
