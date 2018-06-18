@@ -22,6 +22,7 @@
        <a *ngIf="permissionSmartRecipe()" mat-list-item routerLink="./smart-recipe-overview">Smart-Rezept-Übersicht</a>
         <a *ngIf="permissionDiagnostic()" mat-list-item routerLink="./diagnostics">Diagnose</a>
         <a *ngIf="permissionPatientOverview()" mat-list-item routerLink="./patient-overview">Patientenübersicht</a>
+        <a *ngIf="permissionHealthRecordUser()" mat-list-item routerLink="./health-record-user">Patientenübersicht</a>
         <a *ngIf="permissionEmployeeOverview()" mat-list-item routerLink="./employee-overview">Mitarbeiterübersicht</a>
         <a *ngIf="permissionAccessRequest()" mat-list-item routerLink="./access-requests">Einsichtsanfragen</a>
         <a *ngIf="permissionSickNote()" mat-list-item routerLink="./sick-note-overview">Krankenschein-Übersicht</a>
