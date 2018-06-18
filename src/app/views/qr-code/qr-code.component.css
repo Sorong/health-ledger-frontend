@@ -1,3 +1,10 @@
 qrcode {
   border: 1px solid black;
+  width: fit-content;
+  height: fit-content;
+}
+
+img {
+  max-width: 500px !important;
+  max-height: 500px !important;
 }
