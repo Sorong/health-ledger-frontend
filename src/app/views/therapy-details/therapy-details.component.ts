@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Treatment} from '../../models/treatment.model';
 import {TreatmentService} from '../../services/treatment.service';
 
@@ -10,9 +10,9 @@ import {TreatmentService} from '../../services/treatment.service';
   styleUrls: ['./therapy-details.component.css']
 })
 export class TherapyDetailsComponent implements OnInit {
-  
+
   treatment: Treatment;
-  constructor(private route: ActivatedRoute, private treatmentService:TreatmentService) {
+  constructor(private route: ActivatedRoute, private treatmentService:TreatmentService, private router : Router) {
     this.route.params.map(p => p.id).subscribe(id => {
       this.treatmentService.get().subscribe(obs => this.refreshData(obs, id));
     });
@@ -25,4 +25,7 @@ export class TherapyDetailsComponent implements OnInit {
     this.treatment = obs.filter(entry => entry['id'] === id)[0];
   }
 
+  back() {
+    this.router.navigate(['./login']);
+  }
 }
