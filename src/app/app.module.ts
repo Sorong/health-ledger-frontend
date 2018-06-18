@@ -25,14 +25,15 @@ import {OverviewComponent} from './views/overview/overview.component';
 import {EmployeeOverviewComponent} from './views/employee-overview/employee-overview.component';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
 import {TherapyComponent} from './views/therapy/therapy.component';
-import { AttestationComponent } from './views/attestation/attestation.component';
-import { PrescriptionComponent } from './views/prescription/prescription.component';
-import { TreatmentComponent } from './views/treatment/treatment.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpHeaderProxy } from './interceptors/http-header-proxy';
-import { AuthGuard } from './guards/auth.guard';
-import { PermissionGuard } from './guards/permission.guard';
+import {AttestationComponent} from './views/attestation/attestation.component';
+import {PrescriptionComponent} from './views/prescription/prescription.component';
+import {TreatmentComponent} from './views/treatment/treatment.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpHeaderProxy} from './interceptors/http-header-proxy';
+import {AuthGuard} from './guards/auth.guard';
+import {PermissionGuard} from './guards/permission.guard';
 import {HealthRecordUserComponent} from './views/health-record-user/health-record-user.component';
+import {RecordComponent} from './views/record/record.component';
 
 
 const appRoutes: Routes = [
@@ -84,7 +85,9 @@ const appRoutes: Routes = [
     TherapyComponent,
     AttestationComponent,
     PrescriptionComponent,
-    TreatmentComponent
+    TreatmentComponent,
+    HealthRecordUserComponent,
+    RecordComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -103,9 +106,9 @@ const appRoutes: Routes = [
   exports: [],
   providers: [
     {
-        provide: HTTP_INTERCEPTORS,
-        useClass: HttpHeaderProxy,
-        multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpHeaderProxy,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
