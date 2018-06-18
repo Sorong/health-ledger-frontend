@@ -12,11 +12,11 @@ export class StateService {
 
   public user: User;
 
-  static default_pages = {patient: '/health-record',
-                            arzt: '/login',
-                            versicherung: '/login',
-                            apotheke: '/login',
-                            arbeitgeber: '/login'};
+  static default_pages = {patient: '/health-record-user',
+                            arzt: '/patient-overview',
+                            versicherung: '/patient-overview',
+                            apotheke: '/qr-code',
+                            arbeitgeber: '/employee-overview'};
 
   constructor(private router: Router,
       private storage: StorageService,
