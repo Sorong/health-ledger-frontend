@@ -4,6 +4,8 @@ import {Treatment} from '../../models/treatment.model';
 import {Category, Diagnose} from '../../models/diagnose.model';
 import {Prescription} from '../../models/prescription.model';
 import {Attestation} from '../../models/attestation.model';
+import { ActivatedRoute } from '@angular/router';
+import { TreatmentService } from '../../services/treatment.service';
 
 @Component({
   selector: 'app-diagnostics',
@@ -14,9 +16,13 @@ import {Attestation} from '../../models/attestation.model';
 export class DiagnosticsComponent implements OnInit {
   //Stateservice für akt. Username
   treatment: Treatment;
+  pub_key: string;
 
 
-  constructor() {
+  constructor(private route:ActivatedRoute, private treatmentService: TreatmentService) {
+    this.route.params.map(p => p.pub_key).subscribe(pub_key => {
+      this.pub_key = pub_key;
+    });
     this.treatment = {
       id: '',
       issue_date: new Date(),
@@ -46,6 +52,12 @@ export class DiagnosticsComponent implements OnInit {
   }
 
   postTreatment() {
-    console.log('bockwurst');
+    this.treatmentService.post(this.pub_key, this.treatment).subscribe(response =>{
+      if(response != true){
+        console.log("Error");
+        console.log("Used PublicKey: " + this.pub_key);
+        console.error(response);
+      }
+    });
   }
 }
