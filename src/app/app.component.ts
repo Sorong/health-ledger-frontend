@@ -28,6 +28,10 @@ export class AppComponent {
     return this.itemIsAviableForUser('patient-overview');
   }
 
+  permissionHealthRecordUser(): boolean{
+    return this.itemIsAviableForUser('health-record-user');
+  }
+
   permissionEmployeeOverview(): boolean{
     return this.itemIsAviableForUser('employee-overview');
   }
