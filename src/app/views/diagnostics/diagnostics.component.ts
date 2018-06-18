@@ -4,6 +4,13 @@ import {Treatment} from '../../models/treatment.model';
 import {Category, Diagnose} from '../../models/diagnose.model';
 import {Prescription} from '../../models/prescription.model';
 import {Attestation} from '../../models/attestation.model';
+import {v4 as uuid} from 'uuid';
+import {ActivatedRoute} from '@angular/router';
+import {TreatmentService} from '../../services/treatment.service';
+import {UserService} from '../../services/user.service';
+import {StateService} from '../../services/state.service';
+import {RequestService} from '../../services/request.service';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-diagnostics',
@@ -14,14 +21,18 @@ import {Attestation} from '../../models/attestation.model';
 export class DiagnosticsComponent implements OnInit {
   //Stateservice für akt. Username
   treatment: Treatment;
+  pub_key: string;
 
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private treatmentService: TreatmentService, private stateService : StateService, private requestService : RequestService) {
+    this.route.params.map(p => p.pub_key).subscribe(pub_key => {
+      this.pub_key = pub_key;
+    });
     this.treatment = {
-      id: '',
+      id: uuid(),
       issue_date: new Date(),
-      patient_name: 'Hier könnte Ihr Name stehen',
-      doctor_name: 'Dr. Acula',
+      patient_name: 'Hirsch heiß ich',
+      doctor_name: this.stateService.user.name,
       diagnose: {
         category: Category.NONE,
         diagnose: ''
@@ -43,9 +54,22 @@ export class DiagnosticsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.requestService.get().subscribe(obs => {
+        const filtered_obs = obs.filter(entry => entry['id'] === this.pub_key);
+        if (filtered_obs.length !== 0) {
+          this.treatment.patient_name = filtered_obs[0].requester;
+        }
+      }
+    );
   }
 
   postTreatment() {
-    console.log('bockwurst');
+    this.treatmentService.post(this.pub_key, this.treatment).subscribe(response => {
+      if (response !== true) {
+        console.log('Error');
+        console.log('Used PublicKey: ' + this.pub_key);
+        console.error(response);
+      }
+    });
   }
 }
