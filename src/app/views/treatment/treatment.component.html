@@ -17,13 +17,11 @@
 
     <mat-form-field *ngIf="editable">
       <mat-select placeholder="Kategorie" [formControl]="detailsCategory" required>
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let item of details" [value]="details">
-          {{item.name}}
+        <mat-option *ngFor="let item of category" [value]="category">
+          {{item}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="detailsCategory.hasError('required')">Bitte wählen Sie eine Kategorie</mat-error>
-      <mat-hint>{{detailsCategory.value?.name}}</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
