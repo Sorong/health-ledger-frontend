@@ -10,9 +10,9 @@ import {TreatmentService} from '../../services/treatment.service';
   styleUrls: ['./smart-recipe-details.component.css']
 })
 export class SmartRecipeDetailsComponent implements OnInit {
-  treatmentService = new TreatmentService();
+  
   treatment: Treatment;
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private treatmentService:TreatmentService) {
     this.route.params.map(p => p.id).subscribe(id => {
       this.treatmentService.get().subscribe(obs => this.refreshData(obs, id));
     });
