@@ -13,23 +13,23 @@ export class PermissionGuard implements CanActivateChild {
         patient: ['therapy-details', 'health-record', 'smart-recipe-overview',
             'diagnostics', 'smart-recipe-details', 'patient-overview', 'access-requests',
             'sick-note-overview', 'access-request-details-user', 'access-request-details',
-            'qr-code', 'qr-code-scanner', 'employee-overview'],
+            'qr-code', 'qr-code-scanner', 'employee-overview','health-record-user'],
         arzt: ['therapy-details', 'health-record', 'smart-recipe-overview',
             'diagnostics', 'smart-recipe-details', 'patient-overview', 'access-requests',
             'sick-note-overview', 'access-request-details-user', 'access-request-details',
-            'qr-code', 'qr-code-scanner', 'employee-overview'],
+            'qr-code', 'qr-code-scanner', 'employee-overview','health-record-user'],
         versicherung: ['therapy-details', 'health-record', 'smart-recipe-overview',
             'diagnostics', 'smart-recipe-details', 'patient-overview', 'access-requests',
             'sick-note-overview', 'access-request-details-user', 'access-request-details',
-            'qr-code', 'qr-code-scanner', 'employee-overview'],
+            'qr-code', 'qr-code-scanner', 'employee-overview','health-record-user'],
         apotheke: ['therapy-details', 'health-record', 'smart-recipe-overview',
             'diagnostics', 'smart-recipe-details', 'patient-overview', 'access-requests',
             'sick-note-overview', 'access-request-details-user', 'access-request-details',
-            'qr-code', 'qr-code-scanner', 'employee-overview'],
+            'qr-code', 'qr-code-scanner', 'employee-overview','health-record-user'],
         arbeitgeber: ['therapy-details', 'health-record', 'smart-recipe-overview',
             'diagnostics', 'smart-recipe-details', 'patient-overview', 'access-requests',
             'sick-note-overview', 'access-request-details-user', 'access-request-details',
-            'qr-code', 'qr-code-scanner', 'employee-overview']
+            'qr-code', 'qr-code-scanner', 'employee-overview','health-record-user']
         };
 
     constructor(private stateService: StateService, private router: Router){}
