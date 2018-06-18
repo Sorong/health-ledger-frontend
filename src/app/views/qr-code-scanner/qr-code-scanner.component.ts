@@ -61,7 +61,7 @@ export class QrCodeScannerComponent implements OnInit {
     if(obj == null)
       return
 
-    this.router.navigate(['./access-request-details', obj.pubKey, obj.name]);
+    this.router.navigate(['./access-request-details', obj.publicKey, obj.name]);
   }
 
   onCancel() {
