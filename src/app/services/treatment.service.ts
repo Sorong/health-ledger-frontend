@@ -1,22 +1,24 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import { environment } from '../../environments/environment';
 import {Treatment} from '../models/treatment.model';
-import {TREATMENT} from '../models/mocks/mock-treatment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreatmentService {
+  private col:string = "treatment";
 
-  constructor() {
-  }
-
+  constructor(private http:HttpClient) { }
 
   get (): Observable<Treatment[]> {
-    return of(TREATMENT);
+    return this.http.get(`${environment.host}${this.col}`)
+                    .map(res=>{return res as Treatment[]});
   }
 
-  post(pub_key: string): Observable<never> {
-    return new Observable<never>(subscriber => subscriber.complete());
+  post(pub_key: string, treatment: Treatment): Observable<boolean> {
+    return this.http.post(`${environment.host}${this.col}`, {publicKey: pub_key, treatment: treatment})
+                    .map(res=>{return true;})
   }
 }

@@ -11,11 +11,27 @@
 
 
     <mat-form-field *ngIf="editable">
-      <textarea matInput placeholder="Rezept"></textarea>
+      <textarea matInput placeholder="Wirkstoff"></textarea>
     </mat-form-field>
 
     <mat-form-field *ngIf="(!editable && treatment?.prescription != null)">
-      <textarea matInput placeholder="Rezept" value={{treatment?.prescription?.drug}} [readonly]="!editable"></textarea>
+      <textarea matInput placeholder="Wirkstoff" value={{treatment?.prescription?.drug}} readonly></textarea>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="editable">
+      <textarea matInput placeholder="Dosierung"></textarea>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="(!editable && treatment?.prescription != null)">
+      <textarea matInput placeholder="Dosierung" value={{treatment?.prescription?.dosage}} readonly></textarea>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="editable">
+      <textarea matInput placeholder="Notiz"></textarea>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="(!editable && treatment?.prescription != null)">
+      <textarea matInput placeholder="Notiz" value={{treatment?.prescription?.note}} readonly></textarea>
     </mat-form-field>
 
 

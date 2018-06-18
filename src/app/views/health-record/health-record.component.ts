@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
-import {TreatmentService} from '../../services/treatment.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {RequestService} from '../../services/request.service';
+import {Treatment} from '../../models/treatment.model';
+import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'app-health-record',
@@ -9,27 +11,30 @@ import {Router} from '@angular/router';
   styleUrls: ['./health-record.component.css']
 })
 export class HealthRecordComponent implements OnInit {
-  treatmentService = new TreatmentService();
-
   displayedColumns = ['date', 'category', 'note', 'doctor_name', 'details'];
-  ds = new MatTableDataSource([]);
+  dataSource = new MatTableDataSource([]);
+  pub_key = '';
+  isDoctor = false;
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.ds.filter = filterValue;
-  }
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute, private requestService: RequestService, private stateService: StateService) {
+    this.route.params.map(p => p.id).subscribe(key => this.pub_key = key);
+    this.isDoctor = this.stateService.user.type === 'arzt';
   }
 
   ngOnInit() {
-    this.treatmentService.get().subscribe(obs =>
-      this.ds = new MatTableDataSource(obs)
+    this.requestService.get().subscribe(obs => {
+        const filtered_obs = obs.filter(entry => entry['id'] === this.pub_key);
+        if (filtered_obs.length !== 0) {
+          this.dataSource = new MatTableDataSource(filtered_obs[0].Result.treatment);
+        } else {
+          this.dataSource = new MatTableDataSource([]);
+        }
+      }
     );
   }
 
-  selectElement(id: string) {
-    this.router.navigate(['./therapy-details', id]);
+  addDiagnose(pub_key) {
+    this.router.navigate(['./diagnostics', pub_key]);
   }
+
 }

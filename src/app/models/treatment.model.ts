@@ -2,6 +2,7 @@ import {Prescription} from './prescription.model';
 import {Attestation} from '../models/attestation.model';
 import {Diagnose} from './diagnose.model';
 
+
 export class Treatment {
   id: string;
   issue_date: Date;
@@ -11,4 +12,5 @@ export class Treatment {
   prescription: Prescription;
   attestation: Attestation;
 }
+
 

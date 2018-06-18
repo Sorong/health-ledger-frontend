@@ -18,11 +18,11 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   displayedColumns = ['therapy', 'diagnose', 'recipe', 'incapacity'];
   ds = new MatTableDataSource([]);
   requestForm: RequestForm;
-  requestService = new RequestService();
-  treatmentService = new TreatmentService();
   treatments = [];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private requestService:RequestService,
+              private treatmentService:TreatmentService,
+              private route: ActivatedRoute) {
     this.treatmentService.get().subscribe(obs => {this.treatments = obs});
     this.route.params.map(p => p.id).subscribe(id => {
       this.requestService.get().subscribe(obs => this.refreshData(obs, id));

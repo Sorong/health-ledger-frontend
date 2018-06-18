@@ -12,7 +12,6 @@ import {RequestForm} from '../../models/requestForm.model';
 export class AccessRequestComponent implements OnInit {
   displayedColumns = ['datum', 'antragsteller', 'status', 'details'];
   ds = new MatTableDataSource([]);
-  requestService = new RequestService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -20,7 +19,7 @@ export class AccessRequestComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private requestService:RequestService) {
   }
 
   refreshTable(obs: RequestForm[]) {
