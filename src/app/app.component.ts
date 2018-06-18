@@ -57,7 +57,7 @@ export class AppComponent {
       return true;
     }
     else{
-      if(PermissionGuard.permissions[this.state.user.type.toLocaleLowerCase()].includes('smart-recipe-overview'))
+      if(PermissionGuard.permissions[this.state.user.type.toLowerCase()].includes('smart-recipe-overview'))
         return true;
     }
     return false;
@@ -68,7 +68,7 @@ export class AppComponent {
       return false;
     }
     else{
-      if(PermissionGuard.permissions[this.state.user.type.toLocaleLowerCase()].includes(sideBarItem))
+      if(PermissionGuard.permissions[this.state.user.type.toLowerCase()].includes(sideBarItem))
         return true;
     }
     return false;
