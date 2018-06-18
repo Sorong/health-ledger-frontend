@@ -4,6 +4,8 @@ import {Treatment} from '../../models/treatment.model';
 import {Category, Diagnose} from '../../models/diagnose.model';
 import {Prescription} from '../../models/prescription.model';
 import {Attestation} from '../../models/attestation.model';
+import {v4 as uuid} from 'uuid';
+
 
 @Component({
   selector: 'app-diagnostics',
@@ -18,7 +20,7 @@ export class DiagnosticsComponent implements OnInit {
 
   constructor() {
     this.treatment = {
-      id: '',
+      id: uuid(),
       issue_date: new Date(),
       patient_name: 'Hier könnte Ihr Name stehen',
       doctor_name: 'Dr. Acula',
