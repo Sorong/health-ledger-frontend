@@ -34,7 +34,7 @@ export class RSAModule {
     */
     private recursiveCrypt(obj, jsencrypt_instance, decryptFlag=false):void {
         for (var property in obj) { // iterate over all properties of the object
-            if(!property.toString().startsWith("_")){ //exclude fields starting with an underscore
+            if(!property.toString().startsWith("_") && (obj[property] != null)){ //exclude fields starting with an underscore
                 if (obj.hasOwnProperty(property)) { // exclude inherited fields
                     if (typeof obj[property] == "object" && !(obj[property] instanceof encObj)) {
                         // recursively call the function for all members which are non-primitive
