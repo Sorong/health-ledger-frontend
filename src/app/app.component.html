@@ -19,15 +19,15 @@
   <mat-sidenav-container class="hl-sidenav-container">
     <mat-sidenav #sidenav mode="over" [(opened)]="opened" (click)="sidenav.close()">
       <mat-nav-list>
-        <a mat-list-item routerLink="./smart-recipe-overview">Smart-Rezept-Übersicht</a>
-        <a mat-list-item routerLink="./diagnostics">Diagnose</a>
-        <a mat-list-item routerLink="./patient-overview">Patientenübersicht</a>
-        <a mat-list-item routerLink="./employee-overview">Mitarbeiterübersicht</a>
-        <a mat-list-item routerLink="./access-requests">Einsichtsanfragen</a>
-        <a mat-list-item routerLink="./sick-note-overview">Krankenschein-Übersicht</a>
-        <a mat-list-item routerLink="./qr-code">QR-Code</a>
-        <a mat-list-item routerLink="./qr-code-scanner">QR-Code-Scanner</a>
-        <a mat-list-item routerLink="./login">Login</a>
+       <a *ngIf="permissionSmartRecipe()" mat-list-item routerLink="./smart-recipe-overview">Smart-Rezept-Übersicht</a>
+        <a *ngIf="permissionDiagnostic()" mat-list-item routerLink="./diagnostics">Diagnose</a>
+        <a *ngIf="permissionPatientOverview()" mat-list-item routerLink="./patient-overview">Patientenübersicht</a>
+        <a *ngIf="permissionEmployeeOverview()" mat-list-item routerLink="./employee-overview">Mitarbeiterübersicht</a>
+        <a *ngIf="permissionAccessRequest()" mat-list-item routerLink="./access-requests">Einsichtsanfragen</a>
+        <a *ngIf="permissionSickNote()" mat-list-item routerLink="./sick-note-overview">Krankenschein-Übersicht</a>
+        <a *ngIf="permissionQrCode()" mat-list-item routerLink="./qr-code">QR-Code</a>
+        <a *ngIf="permissionQrCodeScanner()" mat-list-item routerLink="./qr-code-scanner">QR-Code-Scanner</a>
+        <a *ngIf="permissionLogin()" mat-list-item routerLink="./login">Login</a>
       </mat-nav-list>
     </mat-sidenav>
 
