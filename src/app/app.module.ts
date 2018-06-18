@@ -32,6 +32,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpHeaderProxy } from './interceptors/http-header-proxy';
 import { AuthGuard } from './guards/auth.guard';
 import { PermissionGuard } from './guards/permission.guard';
+import { CommonModule } from '@angular/common';  
+
 
 
 const appRoutes: Routes = [
@@ -80,7 +82,8 @@ const appRoutes: Routes = [
     TherapyComponent,
     AttestationComponent,
     PrescriptionComponent,
-    TreatmentComponent
+    TreatmentComponent,
+
   ],
   imports: [
     RouterModule.forRoot(
@@ -95,7 +98,8 @@ const appRoutes: Routes = [
     QRCodeModule,
     ZXingScannerModule.forRoot(),
     //End-TherapyDetails
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   exports: [],
   providers: [
