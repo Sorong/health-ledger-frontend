@@ -1,7 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ZXingScannerComponent} from '@zxing/ngx-scanner';
+import {Router} from '@angular/router';
 
 import { Result } from '@zxing/library';
+
 @Component({
   selector: 'app-qr-code-scanner',
   templateUrl: './qr-code-scanner.component.html',
@@ -9,14 +11,13 @@ import { Result } from '@zxing/library';
 })
 export class QrCodeScannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @ViewChild('scanner')
   scanner: ZXingScannerComponent;
 
   hasCameras = false;
   hasPermission: boolean;
-  qrResultString: string;
 
   availableDevices: MediaDeviceInfo[];
   selectedDevice: MediaDeviceInfo;
@@ -52,7 +53,28 @@ export class QrCodeScannerComponent implements OnInit {
 
   handleQrCodeResult(resultString: string) {
     console.log('Result: ', resultString);
-    this.qrResultString = resultString;
+    let obj = null;
+    try {
+      obj = JSON.parse(resultString);
+    } catch(err) { console.log(err); }
+
+    if(obj == null)
+      return
+
+    this.router.navigate(['./access-request-details', obj.pubKey, obj.name]);
+  }
+
+  onCancel() {
+    this.router.navigate(['./access-requests']);
+  }
+
+  onSimulation() {
+    let obj = {
+      pubKey: "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAXPodZ/Mr8bsNb9LbBqcC5YVO\nSy1xHTey/Huiv9xdFhvMGvkbzDgWskfPCfLXicCs0a06OOTQ2XKIVCqlSA4BhMuZ\nXbRrSrdU0oj9f7iiOsn4eKkOhasMmnI5v4CcBmRMvcp2IHmAlu8ikn7rj1NQ3VWH\njju4Zcyq6Qc25B2LmwIDAQAB\n-----END PUBLIC KEY-----",
+      name: "Tester"
+    }
+
+    this.handleQrCodeResult(JSON.stringify(obj));
   }
 
   onDeviceSelectChange(selectedValue: string) {

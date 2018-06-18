@@ -36,4 +36,8 @@ export class AccessRequestComponent implements OnInit {
   selectElement(id: string) {
     this.router.navigate(['./access-request-details-user', id]);
   }
+
+  showScanner() {
+    this.router.navigate(['./qr-code-scanner']);
+  }
 }
