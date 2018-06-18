@@ -32,4 +32,8 @@ export class SmartRecipeOverviewComponent implements OnInit {
   selectElement(id: string) {
     this.router.navigate(['./smart-recipe-details', id]);
   }
+
+  back() {
+    this.router.navigate(['./login']);
+  }
 }
