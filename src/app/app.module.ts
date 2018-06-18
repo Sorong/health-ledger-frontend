@@ -38,7 +38,7 @@ import {RecordComponent} from './views/record/record.component';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {
-    path: ''/*, canActivate: [AuthGuard], canActivateChild: [PermissionGuard]*/, children: [
+    path: '', canActivate: [AuthGuard], canActivateChild: [PermissionGuard], children: [
       {path: 'therapy-details', component: TherapyDetailsComponent},
       {path: 'health-record/:id', component: HealthRecordComponent},
       {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
