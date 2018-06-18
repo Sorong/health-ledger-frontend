@@ -15,7 +15,6 @@ import {SmartRecipeOverviewComponent} from './views/smart-recipe-overview/smart-
 import {DiagnosticsComponent} from './views/diagnostics/diagnostics.component';
 import {PatientOverviewComponent} from './views/patient-overview/patient-overview.component';
 import {AccessRequestComponent} from './views/access-request/access-request.component';
-import {SickNoteOverviewComponent} from './views/sick-note-overview/sick-note-overview.component';
 import {SmartRecipeDetailsComponent} from './views/smart-recipe-details/smart-recipe-details.component';
 import {AccessRequestDetailsUserComponent} from './views/access-request-details-user/access-request-details-user.component';
 import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
@@ -39,7 +38,7 @@ import {RecordComponent} from './views/record/record.component';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {
-    path: '', canActivate: [AuthGuard], canActivateChild: [PermissionGuard], children: [
+    path: ''/*, canActivate: [AuthGuard], canActivateChild: [PermissionGuard]*/, children: [
       {path: 'therapy-details', component: TherapyDetailsComponent},
       {path: 'health-record/:id', component: HealthRecordComponent},
       {path: 'smart-recipe-overview', component: SmartRecipeOverviewComponent},
@@ -47,7 +46,6 @@ const appRoutes: Routes = [
       {path: 'smart-recipe-details/:id', component: SmartRecipeDetailsComponent},
       {path: 'patient-overview', component: PatientOverviewComponent},
       {path: 'access-requests', component: AccessRequestComponent},
-      {path: 'sick-note-overview', component: SickNoteOverviewComponent},
       {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
       {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
       {path: 'qr-code', component: QrCodeComponent},
@@ -74,7 +72,6 @@ const appRoutes: Routes = [
     DiagnosticsComponent,
     PatientOverviewComponent,
     AccessRequestComponent,
-    SickNoteOverviewComponent,
     SmartRecipeDetailsComponent,
     AccessRequestDetailsUserComponent,
     AccessRequestDetailsComponent,
