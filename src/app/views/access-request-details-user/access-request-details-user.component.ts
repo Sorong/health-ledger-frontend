@@ -20,8 +20,8 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   requestForm: RequestForm;
   treatments = [];
 
-  constructor(private requestService:RequestService,
-              private treatmentService:TreatmentService,
+  constructor(private requestService: RequestService,
+              private treatmentService: TreatmentService,
               private route: ActivatedRoute) {
     this.treatmentService.get().subscribe(obs => {this.treatments = obs});
     this.route.params.map(p => p.id).subscribe(id => {

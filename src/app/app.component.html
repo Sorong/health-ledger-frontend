@@ -20,7 +20,6 @@
     <mat-sidenav #sidenav mode="over" [(opened)]="opened" (click)="sidenav.close()">
       <mat-nav-list>
        <a *ngIf="permissionSmartRecipe()" mat-list-item routerLink="./smart-recipe-overview">Smart-Rezept-Übersicht</a>
-        <a *ngIf="permissionDiagnostic()" mat-list-item routerLink="./diagnostics">Diagnose</a>
         <a *ngIf="permissionPatientOverview()" mat-list-item routerLink="./patient-overview">Patientenübersicht</a>
         <a *ngIf="permissionHealthRecordUser()" mat-list-item routerLink="./health-record-user">Krankenakte</a>
         <a *ngIf="permissionEmployeeOverview()" mat-list-item routerLink="./employee-overview">Mitarbeiterübersicht</a>

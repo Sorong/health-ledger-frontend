@@ -18,13 +18,13 @@ export class HealthRecordComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private requestService: RequestService, private stateService: StateService) {
     this.route.params.map(p => p.id).subscribe(key => this.pub_key = key);
-    this.isDoctor = this.stateService.user.type === 'arzt';
+    this.isDoctor = this.stateService.user.type.toLowerCase() === 'arzt';
   }
 
   ngOnInit() {
     this.requestService.get().subscribe(obs => {
-        const filtered_obs = obs.filter(entry => entry['id'] === this.pub_key);
-        if (filtered_obs.length !== 0) {
+        const filtered_obs = obs.filter(entry => entry['publicKey'] === this.pub_key);
+        if (filtered_obs.length !== 0 && filtered_obs[0].result !== null ) {
           this.dataSource = new MatTableDataSource(filtered_obs[0].result.treatment);
         } else {
           this.dataSource = new MatTableDataSource([]);
@@ -33,8 +33,8 @@ export class HealthRecordComponent implements OnInit {
     );
   }
 
-  addDiagnose(pub_key) {
-    this.router.navigate(['./diagnostics', pub_key]);
+  addDiagnose() {
+    this.router.navigate(['./diagnostics', this.pub_key]);
   }
 
 }
