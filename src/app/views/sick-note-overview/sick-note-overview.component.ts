@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {Treatment} from '../../models/treatment.model';
 import {TreatmentService} from '../../services/treatment.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sick-note-overview',
@@ -18,7 +19,7 @@ export class SickNoteOverviewComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor(private treatmentService:TreatmentService) {
+  constructor(private treatmentService:TreatmentService, private router : Router) {
   }
 
   refreshTable(obs: Treatment[]) {
@@ -30,5 +31,8 @@ export class SickNoteOverviewComponent implements OnInit {
   ngOnInit() {
     this.treatmentService.get().subscribe(obs =>
       this.refreshTable(obs));
+  }
+  back() {
+    this.router.navigate(['./login']);
   }
 }

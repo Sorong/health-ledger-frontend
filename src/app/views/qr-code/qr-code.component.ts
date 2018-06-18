@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-qr-code',
@@ -7,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QrCodeComponent implements OnInit {
   public publicKey: string = null;
-  constructor() {
+  constructor(private router : Router) {
     this.publicKey = 'Hello World';
   }
 
   ngOnInit() {
   }
-
+  back() {
+    this.router.navigate(['./login']);
+  }
 }

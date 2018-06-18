@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <qrcode [qrdata]="publicKey" [size]="256" [level]="'M'"></qrcode>
   <br>
-  <button mat-raised-button>Zurück</button>
+  <button mat-raised-button (click)="back()">Zurück</button>
 </div>
 
