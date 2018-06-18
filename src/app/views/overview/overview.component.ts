@@ -13,7 +13,6 @@ export class OverviewComponent implements OnInit {
   @Input() buttonName: string;
   displayedColumns = ['name', 'publickey', 'details'];
   ds = new MatTableDataSource([]);
-  requestService = new RequestService();
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -21,7 +20,7 @@ export class OverviewComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private requestService:RequestService) {
   }
 
   refreshTable(obs: RequestForm[]) {
@@ -43,4 +42,3 @@ export class OverviewComponent implements OnInit {
     this.router.navigate(['./qr-code-scanner']);
   }
 }
-

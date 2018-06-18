@@ -1,25 +1,30 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import { environment } from '../../environments/environment';
 import {RequestForm} from '../models/requestForm.model';
-import {REQUESTS} from '../models/mocks/mock-requests';
+import {Result} from '../models/result.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
+  private col:string = "request";
 
-  constructor() {
-  }
+  constructor(private http:HttpClient) { }
 
   get(): Observable<RequestForm[]> {
-    return of(REQUESTS);
+    return this.http.get(`${environment.host}${this.col}`)
+                    .map(res=>{return res as RequestForm[]});
   }
 
-  post(pubKey: string, form: RequestForm): Observable<never> {
-    return new Observable<never>(subscriber => subscriber.complete());
+  post(pubKey: string, form: RequestForm): Observable<boolean> {
+    return this.http.post(`${environment.host}${this.col}`, {publicKey: pubKey, request: form})
+                    .map(res=>{return true;})
   }
 
-  put(pubKey: string, form: RequestForm): Observable<never> {
-    return new Observable<never>(subscriber => subscriber.complete());
+  put(pubKey: string, requestId:string, result:Result): Observable<boolean> {
+    return this.http.post(`${environment.host}${this.col}`, {publicKey: pubKey, requestId:requestId, result: result})
+                    .map(res=>{return true;})
   }
 }
