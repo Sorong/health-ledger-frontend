@@ -12,6 +12,10 @@ export class TreatmentListComponent implements OnInit {
 
   @Input()
   set treatments(treatments:Treatment[]){
+    treatments = treatments.sort((a , b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
     this.datasource = new MatTableDataSource(treatments);
   }
 
