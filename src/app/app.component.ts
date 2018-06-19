@@ -16,6 +16,10 @@ export class AppComponent {
   constructor(public state: StateService) {
   }
 
+  get IsPatient():boolean {
+    return this.state.user.type == "Patient";
+  }
+
   permissionSmartRecipe(): boolean {
     return this.itemIsAviableForUser('smart-recipe-overview');
   }

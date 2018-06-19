@@ -13,10 +13,10 @@ export class StateService {
   public user: User;
 
   static default_pages = {patient: '/patient-overview',
-                            arzt: '/access-request',
-                            versicherung: '/access-request',
-                            apotheke: '/access-request',
-                            arbeitgeber: '/access-request'};
+                            arzt: '/access-requests',
+                            versicherung: '/access-requests',
+                            apotheke: '/access-requests',
+                            arbeitgeber: '/access-requests'};
 
   constructor(private router: Router,
       private storage: StorageService,

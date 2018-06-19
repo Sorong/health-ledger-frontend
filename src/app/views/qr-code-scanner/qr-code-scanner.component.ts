@@ -22,6 +22,8 @@ export class QrCodeScannerComponent implements OnInit {
   availableDevices: MediaDeviceInfo[];
   selectedDevice: MediaDeviceInfo;
 
+  customKey:string;
+
   ngOnInit(): void {
 
     this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
@@ -70,7 +72,7 @@ export class QrCodeScannerComponent implements OnInit {
 
   onSimulation() {
     let obj = {
-      publicKey: "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMnPL4D3aOWGQ0PRAxF8cwi56D\nqmWFAe3lcOEEW+TI45IA8X2E+FkAcVuKrT+RFAzH7VoRy6bcFv52SP+dlgOp4JgX\njGEr8YNEGmVkNe3SYTZLUUMHjny5cTpA5Z2pvEKlmuTi2NL2r15oLDRk96D8l8FC\nuGhhfba3qqUwMHXOKwIDAQAB\n-----END PUBLIC KEY-----",
+      publicKey: this.customKey,
       name: "Tester"
     }
 

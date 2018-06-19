@@ -52,14 +52,16 @@ export class AccessRequestDetailsUserComponent implements OnInit {
 
       let treatment = item.item;
 
+      if(!item.treatment)
+        treatment.diagnose = null;
+
       if(!item.attestation)
         treatment.attestation = null;
       
       if(!item.recipe)
         treatment.prescription = null;
 
-      if(!item.treatment)
-        treatment.diagnose = null;
+      console.log(treatment);
 
       treatments.push(treatment);
     }

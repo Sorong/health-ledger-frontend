@@ -10,11 +10,11 @@ import { Router } from "@angular/router";
 export class PermissionGuard implements CanActivateChild {
 
     static permissions = {
-        patient: ['patient-overview', 'patient-treatment', 'access-requests', 'access-request-details-user', 'access-request-result', 'qr-code'],
-        arzt: ['access-requests', 'access-request-result', 'access-request-details', 'qr-code-scanner'],
-        versicherung: ['access-requests', 'access-request-result', 'access-request-details', 'qr-code-scanner'],
-        apotheke: ['access-requests', 'access-request-result', 'access-request-details', 'qr-code-scanner'],
-        arbeitgeber: ['access-requests', 'access-request-result', 'access-request-details', 'qr-code-scanner']
+        patient: ['patient-overview', 'patient-treatment', 'access-requests', 'access-request-details-user', 'access-request-result', 'access-request-result-treatment', 'qr-code'],
+        arzt: ['access-requests', 'access-request-result', 'access-request-details', 'access-request-treatment-editor', 'access-request-result-treatment', 'qr-code-scanner'],
+        versicherung: ['access-requests', 'access-request-result', 'access-request-details', 'access-request-result-treatment','qr-code-scanner'],
+        apotheke: ['access-requests', 'access-request-result', 'access-request-details', 'access-request-result-treatment', 'qr-code-scanner'],
+        arbeitgeber: ['access-requests', 'access-request-result', 'access-request-details', 'access-request-result-treatment', 'qr-code-scanner']
         };
 
     constructor(private stateService: StateService, private router: Router){}

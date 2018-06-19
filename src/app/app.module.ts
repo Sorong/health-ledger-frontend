@@ -21,6 +21,8 @@ import {AccessRequestComponent} from './views/access-request/access-request.comp
 import {AccessRequestDetailsUserComponent} from './views/access-request-details-user/access-request-details-user.component';
 import {AccessRequestDetailsComponent} from './views/access-request-details/access-request-details.component';
 import { AccessRequestResultComponent } from './views/access-request-result/access-request-result.component';
+import { AccessRequestResultTreatmentComponent } from './views/access-request-result-treatment/access-request-result-treatment.component';
+import { AccessRequestTreatmentEditorComponent } from './views/access-request-treatment-editor/access-request-treatment-editor.component';
 
 import { TreatmentListComponent } from './views/treatment-list/treatment-list.component';
 import { TreatmentComponent } from './views/treatment/treatment.component';
@@ -41,7 +43,12 @@ const appRoutes: Routes = [
       {path: 'access-requests', component: AccessRequestComponent},
       {path: 'access-request-details-user/:id', component: AccessRequestDetailsUserComponent},
       {path: 'access-request-details/:key/:name', component: AccessRequestDetailsComponent},
+
       {path: 'access-request-result/:id', component: AccessRequestResultComponent},
+      {path: 'access-request-result-treatment/:request/:treatment', component: AccessRequestResultTreatmentComponent},
+
+      {path: 'access-request-treatment-editor/:id', component: AccessRequestTreatmentEditorComponent},
+      
       {path: 'qr-code', component: QrCodeComponent},
       {path: 'qr-code-scanner', component: QrCodeScannerComponent}
     ]
@@ -66,6 +73,8 @@ const appRoutes: Routes = [
     AccessRequestDetailsUserComponent,
     AccessRequestDetailsComponent,
     AccessRequestResultComponent,
+    AccessRequestResultTreatmentComponent,
+    AccessRequestTreatmentEditorComponent,
     
     QrCodeComponent,
     QrCodeScannerComponent,

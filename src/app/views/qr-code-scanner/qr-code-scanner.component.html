@@ -9,9 +9,16 @@
 
   <zxing-scanner #scanner fxFlex class="scanner" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
 
-  <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center" >
-      <button mat-raised-button (click)="onCancel()">Abbrechen</button>
-    <button mat-raised-button (click)="onSimulation()" *ngIf="!hasCameras" >Simulieren</button>
-  </div>
+  <mat-card *ngIf="!hasCameras">
+    <mat-card-title>Simulation</mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+          <textarea matInput placeholder="PublicKey" [(ngModel)]="customKey"></textarea>
+      </mat-form-field>
+      <button mat-raised-button (click)="onSimulation()">Simulieren</button>
+    </mat-card-content>
+  </mat-card>
+<br/>
+  <button mat-raised-button (click)="onCancel()">Abbrechen</button>
 
 </div>

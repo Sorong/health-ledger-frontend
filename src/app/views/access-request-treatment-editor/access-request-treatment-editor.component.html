@@ -1,0 +1,55 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch" >
+    <div fxLayout="row" fxLayoutAlign="start center" >
+        <button mat-raised-button color="primary" (click)="onSave()">Speichern</button>
+        <button mat-raised-button color="accent" routerLink="onCancel()">Zurück</button>
+    </div>
+    <br>
+    <mat-card>
+        <mat-card-title>Diagnose</mat-card-title>
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput placeholder="Bezeichnung" [(ngModel)]="treatment?.diagnose.title"/>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Beschreibung" [(ngModel)]="treatment?.diagnose.description"></textarea>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title>
+            <mat-checkbox [checked]="treatment?.prescription != null" (change)="onPrescription($event)"></mat-checkbox> Rezept
+        </mat-card-title>
+        <mat-card-content *ngIf="treatment?.prescription != null">
+            <mat-form-field>
+                <input matInput placeholder="Wirkstoff" [(ngModel)]="treatment?.prescription.drug"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Dosierung" [(ngModel)]="treatment?.prescription.dosage"/>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Notiz" [(ngModel)]="treatment?.prescription.note"></textarea>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title>
+            <mat-checkbox [checked]="treatment?.attestation != null" (change)="onAttestation($event)"></mat-checkbox> Arbeitsunfähigkeit
+        </mat-card-title>
+        <mat-card-content *ngIf="treatment?.attestation != null">
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="Beginn" [(ngModel)]="treatment?.attestation.from" readonly />
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Ende" [(ngModel)]="treatment?.attestation.to" readonly />
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+          
+</div>
