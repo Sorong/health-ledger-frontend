@@ -33,6 +33,9 @@ export class AccessRequestComponent implements OnInit {
 
   reloadData() {
     this.requestService.get().subscribe(obs => {
+      obs = obs.sort((a , b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
       this.ds = new MatTableDataSource(obs);
     });
   }

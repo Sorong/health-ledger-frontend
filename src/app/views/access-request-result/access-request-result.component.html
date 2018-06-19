@@ -1,6 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="space-around stretch" >
-    <div fxLayout="row" fxLayoutAlign="start center" >
-        <button mat-raised-button color="accent" routerLink="/access-requests">Zurück</button>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="70" fxLayout="row" fxLayoutAlign="start center" >
+            <button mat-raised-button color="accent" routerLink="/access-requests">Zurück</button>
+        </div>
         <button mat-raised-button color="primary" (click)="onNewTreatment()" *ngIf="isDoctor">Neue Behandlung</button>
     </div>
     <br>
@@ -8,7 +10,7 @@
         <input matInput placeholder="Anfrage von:" [value]="request?.name" readonly>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Einsicht ab:" [value]="request?.since" readonly>
+        <input matInput placeholder="Einsicht ab:" [value]="request?.since | date:'dd.MM.yyyy'" readonly>
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Kategorie" [value]="request?.title" readonly>

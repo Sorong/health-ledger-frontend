@@ -12,9 +12,19 @@ export class TreatmentListComponent implements OnInit {
 
   @Input()
   set treatments(treatments:Treatment[]){
+    treatments = treatments.sort((a , b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
     this.datasource = new MatTableDataSource(treatments);
   }
 
+  @Input()
+  set filter(filter:string) {
+    filter = filter.trim(); // Remove whitespace
+    filter = filter.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.datasource.filter = filter;
+  }
 
   @Output() 
   onSelected: EventEmitter<Treatment> = new EventEmitter();
