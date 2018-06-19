@@ -15,6 +15,10 @@ export class PatientOverviewComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    this.reloadData();
+  }
+
+  reloadData(){
     this.treatmentService.get().subscribe(treatments=>{
       this.treatments = treatments;
     });

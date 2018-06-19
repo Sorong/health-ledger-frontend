@@ -15,6 +15,12 @@ export class TreatmentListComponent implements OnInit {
     this.datasource = new MatTableDataSource(treatments);
   }
 
+  @Input()
+  set filter(filter:string) {
+    filter = filter.trim(); // Remove whitespace
+    filter = filter.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.datasource.filter = filter;
+  }
 
   @Output() 
   onSelected: EventEmitter<Treatment> = new EventEmitter();

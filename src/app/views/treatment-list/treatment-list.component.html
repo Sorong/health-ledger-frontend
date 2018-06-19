@@ -1,7 +1,3 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
-
 <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="date">
@@ -26,4 +22,3 @@
   <tr mat-header-row *matHeaderRowDef="['date', 'doctor', 'title', 'details']"></tr>
   <tr mat-row *matRowDef="let row; columns: ['date', 'doctor', 'title', 'details'];"></tr>
 </table>
-<br>

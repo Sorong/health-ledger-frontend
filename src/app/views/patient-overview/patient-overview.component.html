@@ -1,1 +1,14 @@
-<app-treatment-list [treatments]="treatments" (onSelected)="onSelected($event)"></app-treatment-list>
+
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex="70">
+            <input matInput (keyup)="treatmentList.filter = $event.target.value" placeholder="Filter">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button (click)="reloadData()">Aktualisieren</button>
+        </div>
+    </div>
+
+    <app-treatment-list #treatmentList [treatments]="treatments" (onSelected)="onSelected($event)"></app-treatment-list>
+<div>
+  
