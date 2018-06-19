@@ -1,18 +1,25 @@
 import {Result} from '../models/result.model';
 
-export class RequestForm {
+import { v4 as uuid } from 'uuid';
+
+export class Request {
   id: string;
   date: Date;
 
   name: string;
   publicKey: string;
 
-  note: string;
+  title: string;
   since: Date;
 
   treatment: boolean;
   attestation: boolean;
   recipe: boolean;
 
-  result: Result;
+  Result: Result;
+
+  constructor() {
+    this.id = uuid();
+    this.date = new Date();
+  }
 }

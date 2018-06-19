@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {RequestService} from '../../services/request.service';
 import {Router} from '@angular/router';
-import {RequestForm} from '../../models/requestForm.model';
+import {Request} from '../../models/request.model';
+import { StateService } from '../../services/state.service';
+import { Result } from '../../models/result.model';
 
 @Component({
   selector: 'app-access-request',
@@ -10,7 +12,7 @@ import {RequestForm} from '../../models/requestForm.model';
   styleUrls: ['./access-request.component.css']
 })
 export class AccessRequestComponent implements OnInit {
-  displayedColumns = ['datum', 'antragsteller', 'status', 'details'];
+  isPatient = false;
   ds = new MatTableDataSource([]);
 
   applyFilter(filterValue: string) {
@@ -19,25 +21,43 @@ export class AccessRequestComponent implements OnInit {
     this.ds.filter = filterValue;
   }
 
-  constructor(private router: Router, private requestService:RequestService) {
-  }
-
-  refreshTable(obs: RequestForm[]) {
-    console.log(obs);
-    this.ds = new MatTableDataSource(obs);
+  constructor(private router: Router, 
+              private requestService:RequestService,
+              private stateService:StateService) {
+    this.isPatient = stateService.user.type == "Patient";
   }
 
   ngOnInit() {
-    this.requestService.get().subscribe(obs =>
-      this.refreshTable(obs)
-    );
+    this.reloadData();
   }
 
-  selectElement(id: string) {
-    this.router.navigate(['./access-request-details-user', id]);
+  reloadData() {
+    this.requestService.get().subscribe(obs => {
+      this.ds = new MatTableDataSource(obs);
+    });
   }
 
-  showScanner() {
-    this.router.navigate(['./qr-code-scanner']);
+  showScanner(){
+    this.router.navigate(['/qr-code-scanner']);
+  }
+
+  showResult(request: Request) {
+    this.router.navigate(['./access-request-result', request.id]);
+  }
+
+  accept(request:Request) {
+    this.router.navigate(['./access-request-details-user', request.id]);
+  }
+  
+  decline(request:Request) {
+    let result:Result = {
+      rejected: true,
+      reason: 'abgelehnt',
+      treatment: null
+    };
+
+    this.requestService.put(request.publicKey, request.id,  result).subscribe(res=>{
+      this.reloadData();
+    });
   }
 }

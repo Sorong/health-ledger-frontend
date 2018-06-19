@@ -70,7 +70,7 @@ export class QrCodeScannerComponent implements OnInit {
 
   onSimulation() {
     let obj = {
-      pubKey: "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAXPodZ/Mr8bsNb9LbBqcC5YVO\nSy1xHTey/Huiv9xdFhvMGvkbzDgWskfPCfLXicCs0a06OOTQ2XKIVCqlSA4BhMuZ\nXbRrSrdU0oj9f7iiOsn4eKkOhasMmnI5v4CcBmRMvcp2IHmAlu8ikn7rj1NQ3VWH\njju4Zcyq6Qc25B2LmwIDAQAB\n-----END PUBLIC KEY-----",
+      publicKey: "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMnPL4D3aOWGQ0PRAxF8cwi56D\nqmWFAe3lcOEEW+TI45IA8X2E+FkAcVuKrT+RFAzH7VoRy6bcFv52SP+dlgOp4JgX\njGEr8YNEGmVkNe3SYTZLUUMHjny5cTpA5Z2pvEKlmuTi2NL2r15oLDRk96D8l8FC\nuGhhfba3qqUwMHXOKwIDAQAB\n-----END PUBLIC KEY-----",
       name: "Tester"
     }
 

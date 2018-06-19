@@ -1,8 +1,7 @@
-import { RequestForm } from '../models/requestForm.model';
+import { Request } from '../models/request.model';
 
-export interface User {
-    name?: string;
-    type?: string;
-    publicKey: string;
-    request: Array<RequestForm>;
+export class User {
+  name: string;
+  type: string;
+  publicKey: string;
 }

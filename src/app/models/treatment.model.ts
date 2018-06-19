@@ -5,12 +5,9 @@ import {Diagnose} from './diagnose.model';
 
 export class Treatment {
   id: string;
-  issue_date: Date;
-  patient_name: string;
-  doctor_name: string;
+  date: Date;
+  doctor: string;
   diagnose: Diagnose;
   prescription: Prescription;
   attestation: Attestation;
 }
-
-
