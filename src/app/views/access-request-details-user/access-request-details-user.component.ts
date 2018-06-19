@@ -47,9 +47,6 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   onSave() {
     let treatments = new Array<Treatment>();
     for(const item of this.ds.data) {
-      if(!item.attestation && !item.recipe && !item.treatment)
-        continue;
-
       let treatment = item.item;
 
       if(!item.treatment)
@@ -61,7 +58,8 @@ export class AccessRequestDetailsUserComponent implements OnInit {
       if(!item.recipe)
         treatment.prescription = null;
 
-      console.log(treatment);
+      if(treatment.diagnose == null && treatment.attestation == null && treatment.prescription == null)
+        continue;
 
       treatments.push(treatment);
     }
