@@ -29,10 +29,10 @@
     <mat-card-title>Arbeitsunfähigkeit</mat-card-title>
     <mat-card-content>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker1" placeholder="Beginn der Arbeitsunfähigkeit" [value]="treatment?.attestation.from" readonly />
+        <input matInput placeholder="Beginn der Arbeitsunfähigkeit" [value]="treatment?.attestation.from | date:'dd.MM.yyyy'" readonly />
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker2" placeholder="Ende der Arbeitsunfähigkeit" [value]="treatment?.attestation?.to" readonly />
+        <input matInput placeholder="Ende der Arbeitsunfähigkeit" [value]="treatment?.attestation?.to | date:'dd.MM.yyyy'" readonly />
       </mat-form-field>
     </mat-card-content>
 </mat-card>

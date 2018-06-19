@@ -6,7 +6,7 @@
 
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef> Datum </th>
-    <td mat-cell *matCellDef="let element" data-label="Datum"> {{element.date}} </td>
+    <td mat-cell *matCellDef="let element" data-label="Datum"> {{element.date | date:'dd.MM.yyyy HH:mm'}} </td>
   </ng-container>
   <ng-container matColumnDef="doctor">
     <th mat-header-cell *matHeaderCellDef> Arzt </th>

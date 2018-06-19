@@ -8,7 +8,7 @@
         <input matInput placeholder="Anfrage von:" [value]="request?.name" readonly>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Einsicht ab:" [value]="request?.since" readonly>
+        <input matInput placeholder="Einsicht ab:" [value]="request?.since | date:'dd.MM.yyyy'" readonly>
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Kategorie" [value]="request?.title" readonly>
