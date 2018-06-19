@@ -10,6 +10,7 @@ cache:
 script:
   - npm install
   - ng build --base-href /health-ledger-frontend/
+  - cp dist/health-ledger-frontend/index.html dist/health-ledger-frontend/404.html
 deploy:
   provider: pages
   skip_cleanup: true
