@@ -32,6 +32,10 @@
     flex: 1 1 auto;
   }
 
+  .hl-toolbar-icon{
+       margin-right:10px;
+  }
+
   .mat-drawer-content {
     padding: 15px;
   }

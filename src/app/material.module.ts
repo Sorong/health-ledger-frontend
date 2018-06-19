@@ -16,6 +16,7 @@ import {
   MatTableModule,
   MatInputModule,
   MatOptionModule,
+  MatProgressSpinnerModule,
   MatSelectModule
 } from '@angular/material';
 
@@ -52,7 +53,9 @@ import {
     MatNativeDateModule,
     MatTableModule,
     MatInputModule,
-    MatOptionModule, MatSelectModule
+    MatOptionModule,
+    MatProgressSpinnerModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule {}
