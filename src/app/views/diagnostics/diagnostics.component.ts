@@ -1,16 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
 import {Treatment} from '../../models/treatment.model';
-import {Category, Diagnose} from '../../models/diagnose.model';
-import {Prescription} from '../../models/prescription.model';
-import {Attestation} from '../../models/attestation.model';
 import {v4 as uuid} from 'uuid';
 import {ActivatedRoute} from '@angular/router';
 import {TreatmentService} from '../../services/treatment.service';
-import {UserService} from '../../services/user.service';
 import {StateService} from '../../services/state.service';
 import {RequestService} from '../../services/request.service';
-import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-diagnostics',
@@ -30,37 +24,25 @@ export class DiagnosticsComponent implements OnInit {
     });
     this.treatment = {
       id: uuid(),
-      issue_date: new Date(),
-      patient_name: 'Hirsch heiß ich',
-      doctor_name: this.stateService.user.name,
+      date: new Date(),
+      doctor: this.stateService.user.name,
       diagnose: {
-        category: Category.NONE,
-        diagnose: ''
+        title: "",
+        description: ''
       },
       prescription: {
         drug: '',
-        until_date: new Date(),
         dosage: '',
-        note: '',
-        redeemed: false
+        note: ''
       },
       attestation: {
-        is_incapable: false,
-        incapable_since: new Date(),
-        incapable_until: new Date()
+        from: new Date(),
+        to: new Date()
       }
     };
-    this.treatment.prescription.until_date.setDate(new Date().getDate() + 7);
   }
 
   ngOnInit() {
-    this.requestService.get().subscribe(obs => {
-        const filtered_obs = obs.filter(entry => entry['id'] === this.pub_key);
-        if (filtered_obs.length !== 0) {
-          this.treatment.patient_name = filtered_obs[0].name;
-        }
-      }
-    );
   }
 
   postTreatment() {

@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch" >
+    <div fxLayout="row" fxLayoutAlign="start center" >
+        <button mat-raised-button color="primary" (click)="onSave()">Speichern</button>
+        <button mat-raised-button color="accent" routerLink="/access-requests">Zurück</button>
+    </div>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Anfrage von:" [value]="request?.name" readonly>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Einsicht ab:" [value]="request?.since" readonly>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Kategorie" [value]="request?.title" readonly>
+    </mat-form-field>
+    <h2>Behandlungen</h2>
+    <app-treatment-list [treatments]="request?.Result.treatment" (onSelected)="onSelected($event)"></app-treatment-list>
+</div>

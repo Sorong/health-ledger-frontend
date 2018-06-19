@@ -1,0 +1,29 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Datum </th>
+    <td mat-cell *matCellDef="let element" data-label="Datum"> {{element.date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="doctor">
+    <th mat-header-cell *matHeaderCellDef> Arzt </th>
+    <td mat-cell *matCellDef="let element" data-label="Arzt"> {{element.doctor}} </td>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Titel </th>
+    <td mat-cell *matCellDef="let element" data-label="Titel"> {{element.diagnose.title}} </td>
+  </ng-container>
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef> Details </th>
+    <td mat-cell *matCellDef="let element" data-label="Details">
+      <button mat-raised-button (click)="onSelected.emit(element)">Details</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['date', 'doctor', 'title', 'details']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['date', 'doctor', 'title', 'details'];"></tr>
+</table>
+<br>

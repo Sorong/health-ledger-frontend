@@ -2,10 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RequestService} from '../../services/request.service';
-import {Treatment} from '../../models/treatment.model';
 import {StateService} from '../../services/state.service';
-import { RequestForm } from '../../models/requestForm.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Request } from '../../models/request.model';
 
 @Component({
   selector: 'app-health-record',
@@ -15,7 +13,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class HealthRecordComponent implements OnInit {
   displayedColumns = ['date', 'category', 'note', 'doctor_name', 'details'];
   dataSource = new MatTableDataSource([]);
-  request:RequestForm;
+  request:Request;
   isDoctor = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private requestService: RequestService, private stateService: StateService) {
@@ -26,7 +24,7 @@ export class HealthRecordComponent implements OnInit {
   refresh(id) {
     this.requestService.get().subscribe(obs => {
       this.request = obs.find(entry => entry.id === id);
-      this.dataSource = new MatTableDataSource(this.request.result.treatment);
+      this.dataSource = new MatTableDataSource(this.request.Result.treatment);
     });
   }
 

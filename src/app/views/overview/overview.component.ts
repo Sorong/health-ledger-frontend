@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {RequestService} from '../../services/request.service';
 import {Router} from '@angular/router';
-import {RequestForm} from '../../models/requestForm.model';
+import {Request} from '../../models/request.model';
 
 @Component({
   selector: 'app-overview',
@@ -23,7 +23,7 @@ export class OverviewComponent implements OnInit {
   constructor(private router: Router, private requestService:RequestService) {
   }
 
-  refreshTable(obs: RequestForm[]) {
+  refreshTable(obs: Request[]) {
     console.log(obs);
     this.ds = new MatTableDataSource(obs);
   }

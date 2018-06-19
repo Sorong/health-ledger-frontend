@@ -1,32 +1,59 @@
-<mat-accordion *ngIf="treatment?.diagnose !== null">
-
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Diagnose
-      </mat-panel-title>
-      <mat-panel-description>
-        Diagnose {{editable? "ausstellen" : "einsehen"}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-
-    <mat-form-field class="example-full-width" *ngIf="!editable">
-      <input matInput placeholder="Kategorie" value={{treatment?.diagnose?.category}} readonly>
-    </mat-form-field>
-
-    <mat-form-field *ngIf="editable">
-      <mat-select placeholder="Kategorie" [formControl]="detailsCategory" required>
-        <mat-option *ngFor="let item of category" [value]="category">
-          {{item}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="detailsCategory.hasError('required')">Bitte wählen Sie eine Kategorie</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <textarea matInput placeholder="Diagnose" value={{treatment?.diagnose.diagnose}} [readonly]="!editable"></textarea>
-    </mat-form-field>
-
-  </mat-expansion-panel>
-</mat-accordion>
+<mat-accordion>
+    <mat-expansion-panel *ngIf="treatment?.diagnose">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Diagnose
+        </mat-panel-title>
+        <mat-panel-description>
+          Diagnose einsehen
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+          <input matInput placeholder="Bezeichnung" [ngModel]="treatment.diagnose.title" readonly />
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Beschreibung" [ngModel]="treatment.diagnose.description" readonly></textarea>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion *ngIf="treatment?.prescription">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Rezept
+        </mat-panel-title>
+        <mat-panel-description>
+          Rezept einsehen
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput placeholder="Wirkstoff" [ngModel]="treatment.prescription.drug" readonly/>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Dosierung" [ngModel]="treatment.prescription.dosage" readonly/>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Notiz" [ngModel]="treatment.prescription.note" readonly></textarea>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion *ngIf="treatment?.attestation">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Arbeitsunfähigkeit
+        </mat-panel-title>
+        <mat-panel-description>
+            Arbeitsunfähigkeit einsehen
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <mat-form-field>
+          <input matInput [ngModel]="treatment.attestation.from" placeholder="Beginn" readonly />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [ngModel]="treatment.attestation.to" placeholder="Ende" readonly />
+        </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+  
