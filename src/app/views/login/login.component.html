@@ -2,9 +2,15 @@
   <h1 class="mat-display-1">Health Ledger</h1>
   <mat-card fxLayout="column" fxLayoutAlign="center center">
     <mat-card-title>Login</mat-card-title>
-    <mat-card-subtitle>Zertifikat hochladen</mat-card-subtitle>
+    <mat-card-subtitle>Wählen Sie zur Identifizierung das Health Ledger Zertifikat auf Ihrem Gerät aus</mat-card-subtitle>
     <mat-card-content>
-      <input type="file" value="Datei auswählen" (change)="onChange($event)">
+      <button mat-raised-button color="accent" (click)="fileInput.click()">
+          <mat-icon>fingerprint</mat-icon>
+          <span>Zertifikat auswählen</span>
+          <input #fileInput type="file" (change)="onChange($event)" style="display:none;" />
+      </button>
+      <mat-spinner *ngIf=showSpinner class="hl-spinner"></mat-spinner>
+      
     </mat-card-content>
   </mat-card>
 </div>

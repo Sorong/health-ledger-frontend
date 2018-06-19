@@ -9,7 +9,7 @@
 
     <span class="hl-toolbar-filler"></span>
 
-    <mat-icon *ngIf=name>account_circle</mat-icon>
+    <mat-icon class="hl-toolbar-icon" *ngIf=this.state.user>account_circle</mat-icon>
     <span>
       {{this.state.user?.name}}
     </span>
@@ -19,14 +19,14 @@
   <mat-sidenav-container class="hl-sidenav-container">
     <mat-sidenav #sidenav mode="over" [(opened)]="opened" (click)="sidenav.close()">
       <mat-nav-list>
-       <a *ngIf="permissionSmartRecipe()" mat-list-item routerLink="./smart-recipe-overview">Smart-Rezept-Übersicht</a>
-        <a *ngIf="permissionPatientOverview()" mat-list-item routerLink="./patient-overview">Patientenübersicht</a>
-        <a *ngIf="permissionHealthRecordUser()" mat-list-item routerLink="./health-record-user">Krankenakte</a>
-        <a *ngIf="permissionEmployeeOverview()" mat-list-item routerLink="./employee-overview">Mitarbeiterübersicht</a>
-        <a *ngIf="permissionAccessRequest()" mat-list-item routerLink="./access-requests">Einsichtsanfragen</a>
-        <a *ngIf="permissionSickNote()" mat-list-item routerLink="./sick-note-overview">Krankenschein-Übersicht</a>
-        <a *ngIf="permissionQrCode()" mat-list-item routerLink="./qr-code">QR-Code</a>
-        <a *ngIf="permissionQrCodeScanner()" mat-list-item routerLink="./qr-code-scanner">QR-Code-Scanner</a>
+       <a *ngIf="permissionSmartRecipe()" mat-list-item routerLink="./smart-recipe-overview"><mat-icon class="hl-toolbar-icon">receipt</mat-icon>Smart-Rezept-Übersicht</a>
+        <a *ngIf="permissionPatientOverview()" mat-list-item routerLink="./patient-overview"><mat-icon class="hl-toolbar-icon">people</mat-icon> Patientenübersicht</a>
+        <a *ngIf="permissionHealthRecordUser()" mat-list-item routerLink="./health-record-user"><mat-icon class="hl-toolbar-icon">folder</mat-icon>Krankenakte</a>
+        <a *ngIf="permissionEmployeeOverview()" mat-list-item routerLink="./employee-overview"><mat-icon class="hl-toolbar-icon">people</mat-icon> Mitarbeiterübersicht</a>
+        <a *ngIf="permissionAccessRequest()" mat-list-item routerLink="./access-requests"><mat-icon class="hl-toolbar-icon">notifications</mat-icon>Einsichtsanfragen</a>
+        <a *ngIf="permissionSickNote()" mat-list-item routerLink="./sick-note-overview"><mat-icon class="hl-toolbar-icon">folder_shared</mat-icon>Krankenschein-Übersicht</a>
+        <a *ngIf="permissionQrCode()" mat-list-item routerLink="./qr-code"><mat-icon class="hl-toolbar-icon">gradient</mat-icon>QR-Code</a>
+        <a *ngIf="permissionQrCodeScanner()" mat-list-item routerLink="./qr-code-scanner"><mat-icon class="hl-toolbar-icon">photo_camera</mat-icon>QR-Code-Scanner</a>
         <a *ngIf="permissionLogin()" mat-list-item routerLink="./login">Login</a>
       </mat-nav-list>
     </mat-sidenav>

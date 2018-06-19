@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  showSpinner = false;
+
   constructor(private storageService: StorageService, private stateService: StateService) { }
 
   ngOnInit() {
@@ -16,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   onChange(event) {
+    this.showSpinner = true;
     var file = event.srcElement.files;
     var reader = new FileReader();
     reader.onload = (e) => {
