@@ -15,6 +15,6 @@
     <mat-form-field>
         <input matInput placeholder="Kategorie" [value]="request?.title" readonly>
     </mat-form-field>
-    <h2>Behandlungen</h2>
+    <h2 class="mat-h2">Behandlungen</h2>
     <app-treatment-list [treatments]="request?.Result.treatment" (onSelected)="onSelected($event)"></app-treatment-list>
 </div>

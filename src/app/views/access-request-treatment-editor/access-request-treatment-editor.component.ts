@@ -18,6 +18,15 @@ export class AccessRequestTreatmentEditorComponent implements OnInit {
   request:Request;
   treatment:Treatment;
 
+  saveButtonOptions: any = {
+    active: false,
+    text: 'Speichern',
+    spinnerSize: 18,
+    raised: true,
+    buttonColor: 'primary',
+    spinnerColor: 'accent'
+  };
+
   constructor(private stateService:StateService,
               private router:Router,
               private route:ActivatedRoute,
@@ -52,7 +61,10 @@ export class AccessRequestTreatmentEditorComponent implements OnInit {
     this.treatment.attestation = state.checked ? new Attestation() : null;
   }
 
-  onSave(){
+  onSave() {
+    this.saveButtonOptions.active = true;
+    this.saveButtonOptions.text = 'Speichere...';
+
     this.treatmentService.post(this.request.publicKey, this.treatment).subscribe(rest => {
       this.router.navigate(['/access-requests']);
     });

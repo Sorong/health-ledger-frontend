@@ -16,6 +16,15 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   private request:Request;
   private ds:MatTableDataSource<ListItem>;
 
+  saveButtonOptions: any = {
+    active: false,
+    text: 'Speichern',
+    spinnerSize: 18,
+    raised: true,
+    buttonColor: 'primary',
+    spinnerColor: 'accent'
+  };
+
   constructor(private requestService: RequestService,
               private treatmentService: TreatmentService,
               private route: ActivatedRoute,
@@ -45,6 +54,9 @@ export class AccessRequestDetailsUserComponent implements OnInit {
   }
 
   onSave() {
+    this.saveButtonOptions.active = true;
+    this.saveButtonOptions.text = 'Speichere...';
+    
     let treatments = new Array<Treatment>();
     for(const item of this.ds.data) {
       let treatment = item.item;

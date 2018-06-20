@@ -15,16 +15,25 @@ export class AccessRequestComponent implements OnInit {
   isPatient = false;
   ds = new MatTableDataSource([]);
 
+  reloadButtonOptions: any = {
+    active: false,
+    text: 'Aktualisieren',
+    spinnerSize: 18,
+    raised: true,
+    buttonColor: 'default',
+    spinnerColor: 'accent'
+  };
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.ds.filter = filterValue;
   }
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
               private requestService:RequestService,
               private stateService:StateService) {
-    this.isPatient = stateService.user.type == "Patient";
+    this.isPatient = stateService.user.type === 'Patient';
   }
 
   ngOnInit() {
@@ -32,15 +41,24 @@ export class AccessRequestComponent implements OnInit {
   }
 
   reloadData() {
+    this.reloadButtonOptions.active = true;
+    this.reloadButtonOptions.text = 'Lade Daten...';
+
     this.requestService.get().subscribe(obs => {
       obs = obs.sort((a , b) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
       });
       this.ds = new MatTableDataSource(obs);
+
+      setTimeout(() => {
+        this.reloadButtonOptions.active = false;
+        this.reloadButtonOptions.text = 'Aktualisieren';
+      }, 1000);
+
     });
   }
 
-  showScanner(){
+  showScanner() {
     this.router.navigate(['/qr-code-scanner']);
   }
 
@@ -51,7 +69,7 @@ export class AccessRequestComponent implements OnInit {
   accept(request:Request) {
     this.router.navigate(['./access-request-details-user', request.id]);
   }
-  
+
   decline(request:Request) {
     let result:Result = {
       rejected: true,
@@ -59,7 +77,7 @@ export class AccessRequestComponent implements OnInit {
       treatment: null
     };
 
-    this.requestService.put(request.publicKey, request.id,  result).subscribe(res=>{
+    this.requestService.put(request.publicKey, request.id,  result).subscribe(res => {
       this.reloadData();
     });
   }

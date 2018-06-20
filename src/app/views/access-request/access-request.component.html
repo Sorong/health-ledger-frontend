@@ -5,7 +5,7 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
     <div>
-      <button mat-raised-button (click)="reloadData()">Aktualisieren</button>
+      <spinner-button [options]="reloadButtonOptions" (click)="reloadData()"></spinner-button>
       <button mat-raised-button (click)="showScanner()" color="primary" *ngIf="!isPatient">Anfrage erstellen</button>
     </div>
   </div>
