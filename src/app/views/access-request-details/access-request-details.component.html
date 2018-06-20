@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="space-around stretch" >
     <div fxLayout="row" fxLayoutAlign="start center" >
-      <button mat-raised-button color="primary" (click)="onSave()">Speichern</button>
+      <spinner-button [options]="saveButtonOptions" (click)="onSave()"></spinner-button>
       <button mat-raised-button color="accent" routerLink="/access-requests">Zurück</button>
     </div>
     <br>

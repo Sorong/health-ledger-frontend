@@ -19,6 +19,15 @@ export class AccessRequestDetailsComponent implements OnInit {
     {name: 'Sonstiges'}
   ];
 
+  saveButtonOptions: any = {
+    active: false,
+    text: 'Speichern',
+    spinnerSize: 18,
+    raised: true,
+    buttonColor: 'primary',
+    spinnerColor: 'accent'
+  };
+
   request:Request;
 
   constructor(private route: ActivatedRoute,
@@ -40,6 +49,8 @@ export class AccessRequestDetailsComponent implements OnInit {
   }
 
   onSave() {
+    this.saveButtonOptions.active = true;
+    this.saveButtonOptions.text = 'Speichere...';
 
     this.requestService.post(this.request.publicKey, this.request).subscribe(res => {
       this.router.navigate(['./access-requests']);

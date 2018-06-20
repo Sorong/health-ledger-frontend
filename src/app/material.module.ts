@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatProgressButtons } from 'mat-progress-buttons';
 
 import {
   MatButtonModule,
@@ -16,6 +17,7 @@ import {
   MatTableModule,
   MatInputModule,
   MatOptionModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
   MatSelectModule
 } from '@angular/material';
@@ -54,6 +56,8 @@ import {
     MatTableModule,
     MatInputModule,
     MatOptionModule,
+    MatProgressBarModule,
+    MatProgressButtons,
     MatProgressSpinnerModule,
     MatSelectModule
   ]
