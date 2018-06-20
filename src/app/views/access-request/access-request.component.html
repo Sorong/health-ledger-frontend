@@ -19,7 +19,7 @@
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element" data-label="Antragsteller"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element" data-label="Name"> {{element.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
@@ -29,8 +29,8 @@
 
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Aktionen </th>
-      <td mat-cell *matCellDef="let element" data-label="Details">
-          <button mat-raised-button (click)="showResult(element)" *ngIf="element.Result && !element.Result.rejected"> Einsehen</button>
+      <td mat-cell *matCellDef="let element" data-label="Aktionen">
+          <button mat-raised-button (click)="showResult(element)" *ngIf="element.Result" [disabled]="element.Result.rejected"> Einsehen</button>
           <button mat-raised-button (click)="accept(element)" color="primary" *ngIf="isPatient && !element.Result"> Annehmen</button>
           <button mat-raised-button (click)="decline(element)" color="accent" *ngIf="isPatient && !element.Result"> Ablehnen</button>
       </td>
