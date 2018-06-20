@@ -12,6 +12,8 @@ export class TreatmentListComponent implements OnInit {
 
   @Input()
   set treatments(treatments:Treatment[]){
+    if(treatments == null)
+      return;
     treatments = treatments.sort((a , b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
