@@ -31,8 +31,7 @@
       <th mat-header-cell *matHeaderCellDef> Aktionen </th>
       <td mat-cell *matCellDef="let element" data-label="Aktionen">
           <button mat-raised-button (click)="showResult(element)" *ngIf="element.Result" [disabled]="element.Result.rejected"> Einsehen</button>
-          <button mat-raised-button (click)="accept(element)" color="primary" *ngIf="isPatient && !element.Result"> Annehmen</button>
-          <spinner-button [options]="rejectButtonOptions" (click)="decline(element)" *ngIf="isPatient && !element.Result"> Ablehnen</spinner-button>
+          <button mat-raised-button (click)="accept(element)" color="primary" *ngIf="isPatient && !element.Result"> Ansehen</button>
       </td>
     </ng-container>
 

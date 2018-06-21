@@ -3,7 +3,10 @@
         <div fxFlex="70" fxLayout="row" fxLayoutAlign="start center" >
             <button mat-raised-button color="accent" routerLink="/access-requests">Zurück</button>
         </div>
-        <button mat-raised-button color="primary" (click)="onNewTreatment()" *ngIf="isDoctor">Neue Behandlung</button>
+        <div>
+          <button mat-raised-button color="primary" (click)="onNewTreatment()" *ngIf="isDoctor">Neue Behandlung</button>
+          <button mat-raised-button (click)="showRequest()" color="primary" *ngIf="!isPatient">Erneut anfragen</button>
+        </div>
     </div>
     <br>
     <mat-form-field>
