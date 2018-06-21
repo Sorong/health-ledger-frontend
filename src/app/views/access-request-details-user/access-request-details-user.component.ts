@@ -18,11 +18,21 @@ export class AccessRequestDetailsUserComponent implements OnInit {
 
   saveButtonOptions: any = {
     active: false,
-    text: 'Speichern',
+    text: 'Annehmen',
     spinnerSize: 18,
     raised: true,
     buttonColor: 'primary',
     spinnerColor: 'accent'
+  };
+
+
+  rejectButtonOptions: any = {
+    active: false,
+    text: 'Ablehnen',
+    spinnerSize: 18,
+    raised: true,
+    buttonColor: 'accent',
+    spinnerColor: 'primary'
   };
 
   constructor(private requestService: RequestService,
@@ -55,8 +65,8 @@ export class AccessRequestDetailsUserComponent implements OnInit {
 
   onSave() {
     this.saveButtonOptions.active = true;
-    this.saveButtonOptions.text = 'Speichere...';
-    
+    this.saveButtonOptions.text = 'Annehmen...';
+
     let treatments = new Array<Treatment>();
     for(const item of this.ds.data) {
       let treatment = item.item;
@@ -66,7 +76,7 @@ export class AccessRequestDetailsUserComponent implements OnInit {
 
       if(!item.attestation)
         treatment.attestation = null;
-      
+
       if(!item.recipe)
         treatment.prescription = null;
 
@@ -85,6 +95,23 @@ export class AccessRequestDetailsUserComponent implements OnInit {
     this.requestService.put(this.request.publicKey, this.request.id, result).subscribe(res=>{
       this.router.navigate(['/access-requests']);
     })
+  }
+
+  decline() {
+    this.rejectButtonOptions.active = true;
+    this.rejectButtonOptions.text = 'Ablehnen...';
+
+    let result: Result = {
+      rejected: true,
+      reason: 'abgelehnt',
+      treatment: null
+    };
+
+    this.requestService.put(this.request.publicKey, this.request.id,  result).subscribe(res => {
+      this.rejectButtonOptions.active = false;
+      this.rejectButtonOptions.text = 'Ablehnen';
+      this.router.navigate(['/access-requests']);
+    });
   }
 
 }

@@ -17,7 +17,7 @@ export class AccessRequestResultComponent implements OnInit {
   constructor(private requestService:RequestService,
               private stateService:StateService,
               private route:ActivatedRoute,
-              private router: Router) { 
+              private router: Router) {
     this.isDoctor = this.stateService.user.type == "Arzt";
     this.route.params.map(p => p.id).subscribe(id => {
       this.requestService.get().subscribe(requests=>{
@@ -30,11 +30,15 @@ export class AccessRequestResultComponent implements OnInit {
   }
 
   onSelected(treatment:Treatment) {
-    
+
     this.router.navigate(['access-request-result-treatment', this.request.id, treatment.id]);
   }
 
   onNewTreatment(){
     this.router.navigate(['access-request-treatment-editor', this.request.id]);
+  }
+
+  showRequest(){
+    this.router.navigate(['access-request-details', this.request.publicKey, this.request.name]);
   }
 }

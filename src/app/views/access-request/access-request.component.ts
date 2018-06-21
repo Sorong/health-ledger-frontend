@@ -24,16 +24,6 @@ export class AccessRequestComponent implements OnInit {
     spinnerColor: 'accent'
   };
 
-  
-  rejectButtonOptions: any = {
-    active: false,
-    text: 'Ablehnen',
-    spinnerSize: 18,
-    raised: true,
-    buttonColor: 'accent',
-    spinnerColor: 'primary'
-  };
-
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -78,22 +68,5 @@ export class AccessRequestComponent implements OnInit {
 
   accept(request:Request) {
     this.router.navigate(['./access-request-details-user', request.id]);
-  }
-
-  decline(request:Request) {
-    this.rejectButtonOptions.active = true;
-    this.rejectButtonOptions.text = 'Ablehnen...';
-
-    let result:Result = {
-      rejected: true,
-      reason: 'abgelehnt',
-      treatment: null
-    };
-
-    this.requestService.put(request.publicKey, request.id,  result).subscribe(res => {
-      this.rejectButtonOptions.active = false;
-      this.rejectButtonOptions.text = 'Ablehnen';
-      this.reloadData();
-    });
   }
 }
