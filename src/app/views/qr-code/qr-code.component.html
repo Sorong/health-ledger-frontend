@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <qrcode [qrdata]="userData" [size]="1000" [level]="'L'"></qrcode>
   <br>
-  <mat-form-field  style="width:450px">
+  <mat-form-field>
       <textarea matInput placeholder="PublicKey" [value]="stateService.user.publicKey"></textarea>
   </mat-form-field>
   <button mat-raised-button (click)="back()">Zurück</button>

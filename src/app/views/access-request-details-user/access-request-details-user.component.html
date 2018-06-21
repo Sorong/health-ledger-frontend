@@ -2,7 +2,7 @@
   <div fxLayout="row" fxLayoutAlign="start center" >
     <spinner-button [options]="saveButtonOptions" (click)="onSave()"></spinner-button>
     <spinner-button [options]="rejectButtonOptions" (click)="decline()"></spinner-button>
-    <button mat-raised-button color="accent" routerLink="/access-requests">Zurück</button>
+    <button mat-raised-button routerLink="/access-requests">Zurück</button>
   </div>
   <br>
   <mat-form-field>
@@ -12,9 +12,9 @@
     <input matInput placeholder="Einsicht ab:" [value]="request?.since | date:'dd.MM.yyyy'" readonly>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Kategorie" [value]="request?.title" readonly>
+    <input matInput placeholder="Kategorie" [value]="request?.title === undefined ? 'Alles' : request?.title" readonly>
   </mat-form-field>
-  <h2>Behandlungen</h2>
+  <h2 class="mat-h2">Behandlungen</h2>
   <table mat-table [dataSource]="ds" class="mat-elevation-z8">
 
     <ng-container matColumnDef="title">
